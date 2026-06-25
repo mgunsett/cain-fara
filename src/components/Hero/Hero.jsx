@@ -1,0 +1,321 @@
+import { useRef, useEffect, useCallback } from 'react'
+import { Box, Text, Flex, VStack, HStack, Image } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import MatchBox from './MatchBox'
+import { playerData } from '../../data/playerData'
+import useMatches from '../../hooks/useMatches'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const MotionBox = motion(Box)
+
+function PlayerPanel() {
+  return (
+    <Flex 
+    direction={{base:'column', md:'row'}} 
+    justifyContent={'flex-start'} 
+    alignItems={'flex-start'} 
+    gap={{base:2,md:4}}
+    >  
+      <Text
+        fontFamily="heading"
+        fontSize={{ base: '70px', md: '100px' }}
+        lineHeight={0.9}
+        color="transparent"
+        sx={{ WebkitTextStroke: '2px #4D93D6' }}
+      >
+        {playerData.number}
+      </Text>
+      <Box w={{base:'60px',md:"1px"}} h={{base:"1px", md: "70px", lg: "80px"}} bg="brand.brown" />
+      <Flex direction={'column'} justifyContent={'flex-start'} gap={1}>
+        <Flex gap={1}>
+          <Text fontFamily="mono" fontSize={{base:'9px',md:"12px"}} color="brand.gray"
+            textTransform="uppercase" letterSpacing="widest">
+            Posición
+          </Text>
+          <Text fontFamily="mono" fontSize={{base:'9px',md:"12px"}} color="brand.brown"
+            fontWeight="700" textTransform="uppercase" letterSpacing="widest">
+            {playerData.position}
+          </Text>
+        </Flex>
+        <Flex justifyContent='flex-start' alignItems='center' gap={{base:'8px',md:'12px'}}>
+          <Image src={playerData.nationalityFlag} w={{ base: '15px', md: '20px' }} />
+          <Text mb={'-5px'} fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.gray" letterSpacing="wider">
+            {playerData.nationality}
+          </Text>
+        </Flex>
+        <Flex justifyContent='flex-start' alignItems={'flex-end'} gap={{base:'8px',md:'10px'}} spacing={1} mt={'3px'} ml={-1}>
+          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '16px', md: '25px' }} h={{base:'20px',md:'28px'}} />
+          <Text fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.gray" letterSpacing="wider">
+            {playerData.currentClub}
+          </Text>
+        </Flex>
+      </Flex>
+    </Flex>
+  )
+}
+
+export default function Hero() {
+  const outerRef     = useRef(null)
+  const containerRef = useRef(null)
+  const bgGlowRef    = useRef(null)
+  const midLayerRef  = useRef(null)
+  const photoRef     = useRef(null)
+  const line1Ref     = useRef(null)
+  const line2Ref     = useRef(null)
+  const vignetteRef  = useRef(null)
+  const { matches }  = useMatches()
+
+  const handleMouseMove = useCallback((e) => {
+    const xn = (e.clientX / window.innerWidth  - 0.5) * 2
+    const yn = (e.clientY / window.innerHeight - 0.5) * 2
+    gsap.to(bgGlowRef.current,   { x: xn * 6,  y: yn * 3,  duration: 1.8, ease: 'power2.out' })
+    gsap.to(midLayerRef.current, { x: xn * 14, y: yn * 7,  duration: 1.3, ease: 'power2.out' })
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [handleMouseMove])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo([line1Ref.current, line2Ref.current],
+        { yPercent: 110, opacity: 0 },
+        { yPercent: 0, opacity: 1, duration: 1.1, stagger: 0.08, ease: 'expo.out', delay: 0.4 }
+      )
+      gsap.fromTo(photoRef.current,
+        { clipPath: 'inset(100% 0 0 0)', opacity: 0 },
+        { clipPath: 'inset(0% 0 0 0)', opacity: 1, duration: 1.5, ease: 'power3.out', delay: 0.6 }
+      )
+    }, containerRef)
+    return () => ctx.revert()
+  }, [])
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(vignetteRef.current,
+        { opacity: 0.15 },
+        {
+          opacity: 0.75,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: outerRef.current,
+            start: 'top top',
+            end: '+=80vh',
+            scrub: 1.2,
+          },
+        }
+      )
+    }, outerRef)
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <Box ref={outerRef} h="200vh" position="relative" zIndex={1} id= 'hero'>
+      <Box
+        ref={containerRef}
+        position="sticky"
+        top={0}
+        h="100vh"
+        overflow="hidden"
+        bg="brand.dark"
+        sx={{
+          maskImage: 'linear-gradient(black 90%, transparent)',
+          WebkitMaskImage: 'linear-gradient(black 90%, transparent)',
+          // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
+          '@supports (height: 100dvh)': { height: '100dvh' },
+        }}
+      >
+        {/* Warm brown glow — BG layer */}
+        <Box
+          ref={bgGlowRef}
+          position="absolute"
+          inset="-10%"
+          zIndex={1}
+          pointerEvents="none"
+          background="radial-gradient(ellipse 70% 60% at 65% 50%, rgba(46, 122, 209, 0.14) 0%, transparent 70%)"
+        />
+
+        {/* Ghost text — MID layer */}
+        <Box
+          ref={midLayerRef}
+          position="absolute"
+          inset={0}
+          zIndex={1}
+          display="flex"
+          flexDir="column"
+          alignItems="center"
+          justifyContent={"center"}
+          mt={{base:-10}}
+          pointerEvents="none"
+          userSelect="none"
+        >
+          <Text
+            fontFamily="heading"
+            fontSize={{ base: '30vw', md: '22vw' }}
+            color="transparent"
+            lineHeight={0.85}
+            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.055)' }}
+          >
+            {playerData.name}
+          </Text>
+          <Text
+            fontFamily="heading"
+            fontSize={{ base: '40vw', md: '22vw' }}
+            color="transparent"
+            lineHeight={0.85}
+            style={{ WebkitTextStroke: '1px rgba(43, 51, 100, 0.29)' }}
+          >
+            {playerData.fullName}
+          </Text>
+        </Box>
+
+        {/* Player photo */}
+        <Box
+          position="absolute"
+          inset={0}
+          zIndex={{base: 3, md: 5,  lg:'9999999 !important'}}
+          display="flex"
+          alignItems="flex-end"
+          justifyContent={{ base: 'center', lg: 'center' }}
+          pl={{ base: 0, lg: '25%' }}
+          pointerEvents="none"
+        >
+          <Box
+            ref={photoRef}
+            h={{ base: '78vh', lg: '94vh' }}
+            sx={{
+              // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
+              '@supports (height: 100dvh)': {
+                height: '78dvh',
+                '@media (min-width: 62em)': { height: '94dvh' },
+              },
+            }}
+            style={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
+          >
+            <Image
+              src={playerData.image}
+              alt={`Ronaldo Martínez, delantero profesional de ${playerData.currentClub}`}
+              h="100%"
+              maxW={{ base: '95vw', lg: '50vw' }}
+              objectFit="contain"
+              objectPosition="bottom center"
+              draggable={false}
+            />
+          </Box>
+        </Box>
+
+        {/* Visible name text */}
+        <Box
+          position="absolute"
+          inset={0}
+          zIndex={2}
+          pointerEvents="none"
+          display="flex"
+          flexDir="column"
+          alignItems={{ base: 'center', lg: 'flex-start' }}
+          justifyContent={{ base: 'flex-start', lg: 'flex-start' }}
+          pl={{ base: 0, lg: '10%' }}
+          pt={{ base: '40%', lg: '6%' }}
+        >
+          <Box as="h1" overflow="hidden">
+            <Text
+              ref={line1Ref}
+              as="span"
+              display="block"
+              fontFamily="heading"
+              fontSize={{ base: '25vw', md: '16vw', lg: '13vw' }}
+              color="white"
+              lineHeight={0.9}
+              style={{ opacity: 0 }}
+              mb={-4}
+              mt={6}
+            >
+              {playerData.name}
+            </Text>
+            <Text
+              ref={line2Ref}
+              as="span"
+              display="block"
+              fontFamily="heading"
+              fontSize={{ base: '34vw', md: '16vw', lg: '13vw' }}
+              color="brand.brown"
+              lineHeight={0.9}
+              style={{ opacity: 0 }}
+            >
+              {playerData.fullName}
+            </Text>
+          </Box>
+        </Box>
+
+        {/* Player info — bottom left */}
+        <Box
+          position="absolute"
+          bottom={{ base: '26%', lg: '25%' }}
+          left={{ base: '5%', lg: '10.3%' }}
+          zIndex={15}
+        >
+          <PlayerPanel />
+        </Box>
+
+        {/* MatchBox desktop */}
+        <Box
+          position="absolute"
+          bottom="12%"
+          right="3%"
+          zIndex={10}
+          display={{ base: 'none', lg: 'block' }}
+        >
+          <MatchBox last={matches.last} next={matches.next} variant="card" />
+        </Box>
+
+        {/* MatchBox mobile */}
+        <Box
+          position="absolute"
+          bottom={{base:"30px",md:"40px"}}
+          left={0}
+          right={0}
+          zIndex={15}
+          display={{ base: 'block', lg: 'none' }}
+        >
+          <MatchBox last={matches.last} next={matches.next} variant="strip" />
+        </Box>
+
+        {/* Scroll indicator */}
+        <MotionBox
+          position="absolute"
+          bottom="50px"
+          left="50%"
+          style={{ translateX: '-50%' }}
+          zIndex={16}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+          display={{ base: 'none', lg: 'flex' }}
+          flexDir="column"
+          alignItems="center"
+          gap={2}
+        >
+          <Box w="1px" h="28px" bg="rgba(255,255,255,0.25)" />
+          <Text fontFamily="mono" fontSize="9px" color="rgba(255,255,255,0.3)"
+                letterSpacing="widest" textTransform="uppercase">
+            Scroll
+          </Text>
+        </MotionBox>
+
+        {/* Vignette */}
+        <Box
+          ref={vignetteRef}
+          position="absolute"
+          inset={0}
+          zIndex={20}
+          background="radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.65) 100%)"
+          pointerEvents="none"
+          style={{ opacity: 0.15 }}
+        />
+      </Box>
+    </Box>
+  )
+}
