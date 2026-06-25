@@ -24,7 +24,7 @@ function PlayerPanel() {
         fontSize={{ base: '70px', md: '100px' }}
         lineHeight={0.9}
         color="transparent"
-        sx={{ WebkitTextStroke: '2px #4D93D6' }}
+        sx={{ WebkitTextStroke: '2px #D44545' }}
       >
         {playerData.number}
       </Text>

@@ -68,8 +68,8 @@ export default function Navbar() {
         py={{ base: 1.5, lg: 1 }}
         borderRadius={{ base: '18px', lg: '10px' }}
         border="1px solid"
-        borderColor={scrolled ? 'rgba(77,147,214,0.30)' : 'rgba(255,255,255,0.12)'}
-        bg={scrolled ? 'rgba(5,11,20,0.55)' : 'rgba(255,255,255,0.04)'}
+        borderColor={scrolled ? 'rgba(212,69,69,0.30)' : 'rgba(255,255,255,0.12)'}
+        bg={scrolled ? 'rgba(10,5,5,0.55)' : 'rgba(255,255,255,0.04)'}
         backdropFilter="blur(20px) saturate(140%)"
         boxShadow={scrolled
           ? '0 10px 34px rgba(0,0,0,0.40)'
@@ -115,7 +115,7 @@ export default function Navbar() {
                 position: 'absolute',
                 inset: 0,
                 borderRadius: '10px',
-                bg: 'linear-gradient(135deg, rgba(77,147,214,0.22) 0%, rgba(30,95,168,0.10) 100%)',
+                bg: 'linear-gradient(135deg, rgba(212,69,69,0.22) 0%, rgba(80,25,25,0.10) 100%)',
                 opacity: 0,
                 transform: 'scale(0.92)',
                 transition: 'opacity 0.25s, transform 0.25s',
@@ -200,7 +200,7 @@ export default function Navbar() {
             mt={3}
             borderRadius="18px"
             border="1px solid rgba(255,255,255,0.12)"
-            bg="rgba(5,11,20,0.65)"
+            bg="rgba(10,5,5,0.65)"
             backdropFilter="blur(20px) saturate(140%)"
             boxShadow="0 10px 34px rgba(0,0,0,0.40)"
             overflow="hidden"

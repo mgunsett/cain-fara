@@ -3,7 +3,7 @@ import { FaXTwitter } from 'react-icons/fa6'
 import { IoMdStats } from 'react-icons/io'
 
 //Hero
-import ronald1 from '@assets/ronald1.webp'
+import ronald1 from '@assets/ronald1.png'
 import paraguay from '@assets/paraguay.webp'
 import talleres from '@assets/talleres.webp'
 //Escudos trayectoria

@@ -133,7 +133,7 @@ export default function VideosSection() {
         right="-12%"
         w="55vw"
         h="55vw"
-        background="radial-gradient(ellipse, rgba(30,95,168,0.16) 0%, transparent 70%)"
+        background="radial-gradient(ellipse, rgba(80,25,25,0.16) 0%, transparent 70%)"
         pointerEvents="none"
       />
 
@@ -151,7 +151,7 @@ export default function VideosSection() {
         pointerEvents="none"
         userSelect="none"
         zIndex={0}
-        sx={{ WebkitTextStroke: '1.5px rgba(30,95,168,0.14)' }}
+        sx={{ WebkitTextStroke: '1.5px rgba(80,25,25,0.14)' }}
       >
         {playerData.number}
       </Text>
@@ -265,7 +265,7 @@ export default function VideosSection() {
                   position="absolute"
                   inset={0}
                   pointerEvents="none"
-                  bg="linear-gradient(180deg, rgba(5,11,20,0.2) 0%, rgba(5,11,20,0.15) 40%, rgba(5,11,20,0.85) 100%)"
+                  bg="linear-gradient(180deg, rgba(10,5,5,0.2) 0%, rgba(10,5,5,0.15) 40%, rgba(10,5,5,0.85) 100%)"
                 />
                 <Box
                   position="absolute"
@@ -301,10 +301,10 @@ export default function VideosSection() {
                   left={{ base: 4, md: 6 }}
                   align="center"
                   gap={2}
-                  bg="rgba(5,11,20,0.55)"
+                  bg="rgba(10,5,5,0.55)"
                   backdropFilter="blur(6px)"
                   border="1px solid"
-                  borderColor="rgba(30,95,168,0.55)"
+                  borderColor="rgba(80,25,25,0.55)"
                   px={3}
                   py="6px"
                   zIndex={4}
@@ -334,7 +334,7 @@ export default function VideosSection() {
                       transition="opacity 0.4s ease"
                       sx={{
                         background:
-                          'conic-gradient(from 0deg, transparent 0deg, rgba(77,147,214,0.95) 80deg, rgba(30,95,168,1) 150deg, transparent 220deg, transparent 360deg)',
+                          'conic-gradient(from 0deg, transparent 0deg, rgba(212,69,69,0.95) 80deg, rgba(80,25,25,1) 150deg, transparent 220deg, transparent 360deg)',
                         WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
                         mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px))',
                       }}
@@ -349,11 +349,11 @@ export default function VideosSection() {
                       borderRadius="full"
                       border="1px solid"
                       borderColor="whiteAlpha.700"
-                      bg="rgba(5,11,20,0.4)"
+                      bg="rgba(10,5,5,0.4)"
                       backdropFilter="blur(10px)"
                       transition="all 0.4s ease"
-                      boxShadow={hovered ? '0 0 36px rgba(30,95,168,0.6)' : 'none'}
-                      _groupHover={{ bg: 'rgba(30,95,168,0.5)', borderColor: 'white' }}
+                      boxShadow={hovered ? '0 0 36px rgba(80,25,25,0.6)' : 'none'}
+                      _groupHover={{ bg: 'rgba(80,25,25,0.5)', borderColor: 'white' }}
                     >
                       <Box as={FiPlay} fontSize={{ base: '26px', md: '38px' }} ml="4px" color="white" />
                     </Flex>

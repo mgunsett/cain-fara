@@ -56,7 +56,7 @@ function PressCard({ article, index }) {
         isExternal
         display="block"
         textDecoration="none"
-        bg="#070F1A"
+        bg="#120808"
         border="1px solid"
         borderColor="whiteAlpha.100"
         borderRadius="lg"
@@ -68,11 +68,11 @@ function PressCard({ article, index }) {
           w: 0, h: 0,
           borderLeft: '10px solid transparent',
           borderRight: '10px solid transparent',
-          borderTop: '10px solid #070F1A',
+          borderTop: '10px solid #120808',
           filter: 'drop-shadow(0 1px 0 rgba(255,255,255,0.06))',
         }}
         _groupHover={{
-          borderColor: 'rgba(30,95,168,0.5)',
+          borderColor: 'rgba(80,25,25,0.5)',
           transform: 'translateY(-4px)',
           bg: 'brand.dark',
           _before: { width: '40px' },
@@ -84,8 +84,8 @@ function PressCard({ article, index }) {
             <Stars count={article.rating ?? 5} />
             <Box
               px={2.5} py={1}
-              bg="rgba(30,95,168,0.10)"
-              border="1px solid rgba(30,95,168,0.28)"
+              bg="rgba(80,25,25,0.10)"
+              border="1px solid rgba(80,25,25,0.28)"
               borderRadius="sm"
             >
               <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
@@ -117,13 +117,13 @@ function PressCard({ article, index }) {
           overflow="hidden"
           align="center"
           justify="center"
-          bg="linear-gradient(135deg, #0B2A4A, #1E5FA8)"
+          bg="linear-gradient(135deg, #5C0E0E, #501919)"
           border="1px solid"
           borderColor="whiteAlpha.200"
           transition="border-color 0.35s, box-shadow 0.35s"
           _groupHover={{
             borderColor: 'brand.brown',
-            boxShadow: '0 0 0 3px rgba(30,95,168,0.16)',
+            boxShadow: '0 0 0 3px rgba(80,25,25,0.16)',
           }}
         >
           {article.logo ? (
@@ -170,7 +170,7 @@ export default function PressSection() {
       as="section"
       id="prensa"
       ref={sectionRef}
-      bg="#050B14"
+      bg="#0A0505"
       pb={{ base: 16, lg: 20 }}
       pt={0}
       px={{ base: 5, lg: 10 }}

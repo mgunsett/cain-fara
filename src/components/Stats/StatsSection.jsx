@@ -32,7 +32,7 @@ function BioCard() {
                 Datos personales
               </Text>
             <Box
-              bg="#050B14"
+              bg="#0A0505"
               border="1px solid"
               borderColor="whiteAlpha.100"
               borderRadius={'10px'}
@@ -290,15 +290,15 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           justify="center"
           position="relative"
           zIndex={1}
-          bg="#070F1A"
+          bg="#120808"
           border="1px solid"
           borderColor={isActive ? 'brand.brown' : 'whiteAlpha.200'}
-          boxShadow={isActive ? '0 0 0 4px rgba(30,95,168,0.18), 0 0 26px rgba(30,95,168,0.35)' : 'none'}
+          boxShadow={isActive ? '0 0 0 4px rgba(80,25,25,0.18), 0 0 26px rgba(80,25,25,0.35)' : 'none'}
           transition="border-color 0.35s, box-shadow 0.35s, transform 0.35s"
           _groupHover={{
             borderColor: 'brand.brown',
             transform: 'translateY(-4px)',
-            boxShadow: '0 0 0 4px rgba(30,95,168,0.18), 0 0 26px rgba(30,95,168,0.35)',
+            boxShadow: '0 0 0 4px rgba(80,25,25,0.18), 0 0 26px rgba(80,25,25,0.35)',
           }}
         >
           <Image
@@ -320,7 +320,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         px={4}
         pt={5}
         pb={8}
-        bg="#070F1A"
+        bg="#120808"
         border="1px solid"
         borderColor="whiteAlpha.100"
         borderRadius="lg"
@@ -334,9 +334,9 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           transition: 'width 0.35s',
         }}
         _groupHover={{
-          borderColor: 'rgba(30,95,168,0.5)',
+          borderColor: 'rgba(80,25,25,0.5)',
           transform: 'translateY(-4px)',
-          bg: 'rgba(30,95,168,0.04)',
+          bg: 'rgba(80,25,25,0.04)',
           _before: { width: '40px' },
         }}
       >
@@ -428,7 +428,7 @@ function ClubTimeline() {
     borderColor: 'whiteAlpha.200',
     color: 'whiteAlpha.700',
     transition: 'all 0.25s',
-    _hover: { borderColor: 'brand.brown', color: 'white', bg: 'rgba(30,95,168,0.12)' },
+    _hover: { borderColor: 'brand.brown', color: 'white', bg: 'rgba(80,25,25,0.12)' },
     _active: { transform: 'scale(0.92)' },
   }
 
@@ -507,7 +507,7 @@ export default function StatsSection() {
       as="section"
       id="estadisticas"
       ref={sectionRef}
-      bg="#050B14"
+      bg="#0A0505"
       pt={{ base: 16, lg: 20 }}
       pb={{ base: 16, lg: 20 }}
       px={{ base: 5, lg: 10 }}

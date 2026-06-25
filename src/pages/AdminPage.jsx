@@ -33,8 +33,8 @@ const inputStyle = {
   fontFamily: 'mono', fontSize: 'sm', color: 'white',
   h: '42px',
   _hover: { borderColor: 'brand.gray' },
-  _focus: { borderColor: 'brand.brown', boxShadow: '0 0 0 1px rgba(30,95,168,0.4)' },
-  _placeholder: { color: 'rgba(122,140,163,0.5)' },
+  _focus: { borderColor: 'brand.brown', boxShadow: '0 0 0 1px rgba(80,25,25,0.4)' },
+  _placeholder: { color: 'rgba(163,137,122,0.5)' },
 }
 
 function ShieldUpload({ label, currentUrl, onFileChange }) {
@@ -69,7 +69,7 @@ function ShieldUpload({ label, currentUrl, onFileChange }) {
         borderRadius="md"
         cursor="pointer"
         transition="all 0.2s"
-        _hover={{ borderColor: 'brand.brown', bg: 'rgba(30,95,168,0.04)' }}
+        _hover={{ borderColor: 'brand.brown', bg: 'rgba(80,25,25,0.04)' }}
         onClick={() => inputRef.current?.click()}
         minH="56px"
       >
@@ -83,7 +83,7 @@ function ShieldUpload({ label, currentUrl, onFileChange }) {
             bg="brand.brownDark"
             borderRadius="sm"
           >
-            <FiUpload color="#4D93D6" size={16} />
+            <FiUpload color="#D44545" size={16} />
           </Flex>
         )}
         <Text fontFamily="mono" fontSize="11px" color="brand.gray">
@@ -112,7 +112,7 @@ function MatchForm({ slot, label, data, onSave, uploading }) {
       <Grid templateColumns={{ base: '1fr', md: '1fr auto 1fr' }} gap={{ base: 4, md: 3 }} alignItems="start">
         {/* Local */}
         <VStack spacing={3} align="stretch">
-          <Box px={3} py={2} bg="rgba(30,95,168,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
+          <Box px={3} py={2} bg="rgba(80,25,25,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
             <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
                   textTransform="uppercase" letterSpacing="widest" mb={2}>
               Local
@@ -141,7 +141,7 @@ function MatchForm({ slot, label, data, onSave, uploading }) {
 
         {/* Visitante */}
         <VStack spacing={3} align="stretch">
-          <Box px={3} py={2} bg="rgba(30,95,168,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
+          <Box px={3} py={2} bg="rgba(80,25,25,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
             <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
                   textTransform="uppercase" letterSpacing="widest" mb={2}>
               Visitante
@@ -237,7 +237,7 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
         justify="space-between"
         align="center"
         px={4} py={2}
-        bg="rgba(30,95,168,0.08)"
+        bg="rgba(80,25,25,0.08)"
         borderBottom="1px solid"
         borderColor="brand.brownDark"
       >
@@ -256,7 +256,7 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
             icon={<FiEdit2 size={14} />}
             size="sm" variant="ghost"
             color="brand.gray"
-            _hover={{ color: 'brand.brownLight', bg: 'rgba(30,95,168,0.1)' }}
+            _hover={{ color: 'brand.brownLight', bg: 'rgba(80,25,25,0.1)' }}
             aria-label="Editar"
             onClick={onEdit}
           />
@@ -332,7 +332,7 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
       {/* Match meta */}
       <Flex
         px={4} py={2}
-        bg="rgba(30,95,168,0.04)"
+        bg="rgba(80,25,25,0.04)"
         borderTop="1px solid"
         borderColor="brand.brownDark"
         justify="space-between"
@@ -347,7 +347,7 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
             </Text>
           )}
           {data.competition && (
-            <Badge fontFamily="mono" fontSize="8px" bg="rgba(30,95,168,0.1)"
+            <Badge fontFamily="mono" fontSize="8px" bg="rgba(80,25,25,0.1)"
                    color="brand.brownLight" px={2} py={0.5} letterSpacing="wider">
               {data.competition}
             </Badge>
@@ -550,8 +550,8 @@ export default function AdminPage() {
             </Text>
             <HStack spacing={2} mt={2}>
               <Badge
-                fontFamily="mono" fontSize="9px" bg="rgba(30,95,168,0.15)"
-                color="brand.brownLight" border="1px solid rgba(30,95,168,0.3)"
+                fontFamily="mono" fontSize="9px" bg="rgba(80,25,25,0.15)"
+                color="brand.brownLight" border="1px solid rgba(80,25,25,0.3)"
                 px={2} py={0.5} letterSpacing="widest"
               >
                 Partidos
@@ -568,7 +568,7 @@ export default function AdminPage() {
             fontFamily="mono" fontSize="xs"
             letterSpacing="widest" textTransform="uppercase"
             leftIcon={<FiLogOut />}
-            _hover={{ color: 'white', bg: 'rgba(30,95,168,0.1)' }}
+            _hover={{ color: 'white', bg: 'rgba(80,25,25,0.1)' }}
             onClick={handleLogout}
           >
             <Text display={{ base: 'none', sm: 'block' }}>Salir</Text>

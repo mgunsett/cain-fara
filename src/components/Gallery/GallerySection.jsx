@@ -110,7 +110,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
         overflow="hidden"
         borderRadius={{ base: '18px', md: '10px' }}
         border="1px solid"
-        borderColor={isCenter ? 'rgba(30,95,168,0.45)' : 'whiteAlpha.100'}
+        borderColor={isCenter ? 'rgba(80,25,25,0.45)' : 'whiteAlpha.100'}
         boxShadow={isCenter
           ? '0 40px 90px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)'
           : '0 24px 60px rgba(0,0,0,0.45)'}
@@ -128,7 +128,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
         {/* Velo oscuro en tarjetas laterales */}
         <Box
           position="absolute" inset={0}
-          bg="rgba(5,11,20,0.55)"
+          bg="rgba(10,5,5,0.55)"
           opacity={isCenter ? 0 : 1}
           transition="opacity 0.45s ease"
           pointerEvents="none"
@@ -147,7 +147,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
           align="center"
           px={2.5} py={1}
           borderRadius="full"
-          bg="rgba(5,11,20,0.55)"
+          bg="rgba(10,5,5,0.55)"
           backdropFilter="blur(6px)"
           border="1px solid"
           borderColor="whiteAlpha.200"
@@ -189,7 +189,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
             boxSize={{base: '24px',md:"34px"}}
             align="center" justify="center"
             borderRadius="full"
-            bg="rgba(5,11,20,0.5)"
+            bg="rgba(10,5,5,0.5)"
             backdropFilter="blur(6px)"
             border="1px solid"
             borderColor="whiteAlpha.200"
@@ -281,7 +281,7 @@ export default function GallerySection() {
       <Box
         position="absolute" top={{base:'16%',md:"10%"}} left="50%" transform="translateX(-50%)"
         w="70vw" h="40vw" maxW="900px"
-        background="radial-gradient(ellipse, rgba(30,95,168,0.14) 0%, transparent 70%)"
+        background="radial-gradient(ellipse, rgba(80,25,25,0.14) 0%, transparent 70%)"
         pointerEvents="none"
       />
 
@@ -393,7 +393,7 @@ export default function GallerySection() {
                   position="relative"
                   border="1px solid"
                   borderColor={active ? 'brand.brown' : 'whiteAlpha.200'}
-                  boxShadow={active ? '0 0 0 2px rgba(30,95,168,0.4)' : 'none'}
+                  boxShadow={active ? '0 0 0 2px rgba(80,25,25,0.4)' : 'none'}
                   opacity={active ? 1 : 0.5}
                   transition="all 0.3s ease"
                   _hover={{ opacity: 1 }}
