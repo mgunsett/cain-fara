@@ -1,4 +1,8 @@
+import { useState } from 'react'
 import { Box, Flex, Text, Image, HStack, VStack } from '@chakra-ui/react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+const MotionBox = motion(Box)
 
 function Shield({ src, name, size = '36px' }) {
   if (src) return <Image src={src} alt={name} boxSize={size} objectFit="contain" />
@@ -87,36 +91,155 @@ function MatchSlot({ data, label, labelColor }) {
   )
 }
 
+function CollapsedTab({ last, onClick }) {
+  const hasScore = last?.homeScore !== null && last?.awayScore !== null
+
+  return (
+    <MotionBox
+      as="button"
+      type="button"
+      onClick={onClick}
+      aria-label="Ver partidos"
+      key="tab"
+      initial={{ opacity: 0, x: 16 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 16 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      bg="whiteAlpha.10"
+      backdropFilter="blur(12px)"
+      border="1px solid"
+      borderColor="brand.brown"
+      borderRightWidth={0}
+      borderTopLeftRadius="10px"
+      borderBottomLeftRadius="10px"
+      minH="250px"
+      py={6}
+      px={3}
+      cursor="pointer"
+      display="flex"
+      flexDir="column"
+      alignItems="center"
+      justifyContent="center"
+      gap={4}
+      transitionProperty="background, border-color"
+      transitionDuration="0.3s"
+      _hover={{ bg: 'whiteAlpha.200', borderColor: 'brand.brownLight' }}
+      _before={{
+        content: '""',
+        position: 'absolute',
+        top: 3, right: 0,
+        w: '2px', h: '28px',
+        bg: 'brand.brown',
+      }}
+      position="relative"
+    >
+      <Text
+        fontFamily="heading"
+        fontSize="md"
+        letterSpacing="widest"
+        color="brand.boneWarm"
+        sx={{ writingMode: 'vertical-rl' }}
+        lineHeight={1}
+      >
+        Partidos
+      </Text>
+
+      {hasScore && (
+        <VStack spacing={1.5} align="center">
+          <Shield src={last.home.shield} name={last.home.name} size="18px" />
+          <HStack spacing={0.5} justify="center">
+            <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
+              {last.homeScore}
+            </Text>
+            <Text fontFamily="heading" fontSize="xs" color="brand.brown" lineHeight={1}>
+              —
+            </Text>
+            <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
+              {last.awayScore}
+            </Text>
+          </HStack>
+          <Shield src={last.away.shield} name={last.away.name} size="18px" />
+        </VStack>
+      )}
+
+      <Box
+        as="span"
+        color="brand.brownLight"
+        fontSize="11px"
+        fontFamily="mono"
+        lineHeight={1}
+      >
+        ‹
+      </Box>
+    </MotionBox>
+  )
+}
+
 export function MatchBox({ last, next, variant = 'card' }) {
   const isCard = variant === 'card'
+  const [isOpen, setIsOpen] = useState(false)
 
   if (isCard) {
     return (
-      <Box
-        w="280px"
-        bg="brand.dark  "
-        backdropFilter="blur(12px)"
-        border="1px solid"
-        borderColor= 'brand.brownDark'
-        borderRadius={'10px'}
-        p={4}
-        position="relative"
-        transition="transform 0.3s, border-color 0.3s"
-        _hover={{ transform: 'translateY(-3px)', borderBottomColor: 'brand.brownLight' }}
-        _before={{
-          content: '""',
-          position: 'absolute',
-          top: 0, left: 2,
-          w: '28px', h: '2px',
-          bg: 'brand.brown',
-        }}
-      >
-        <VStack spacing={{base:4,md:6}} align="stretch">
-          <MatchSlot data={last} label="Último Resultado" labelColor="brand.amber" />
-          <Box h="1px" bg="rgba(255,255,255,0.07)" />
-          <MatchSlot data={next} label="Próximo Partido"  labelColor="brand.brown" />
-        </VStack>
-      </Box>
+      <Flex justify="flex-end" align="flex-start">
+        <AnimatePresence mode="wait" initial={false}>
+          {isOpen ? (
+            <MotionBox
+              key="card"
+              initial={{ opacity: 0, scaleX: 0.9, x: 20 }}
+              animate={{ opacity: 1, scaleX: 1, x: 0 }}
+              exit={{ opacity: 0, scaleX: 0.9, x: 20 }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+              transformOrigin="right center"
+              w="280px"
+              bg="whiteAlpha.10"
+              backdropFilter="blur(12px)"
+              border="1px solid"
+              borderColor="brand.brown"
+              borderRightWidth={0}
+              borderTopLeftRadius="10px"
+              borderBottomLeftRadius="10px"
+              p={4}
+              position="relative"
+              _before={{
+                content: '""',
+                position: 'absolute',
+                top: 0, left: 2,
+                w: '28px', h: '2px',
+                bg: 'brand.brown',
+              }}
+            >
+              <Box
+                as="button"
+                type="button"
+                onClick={() => setIsOpen(false)}
+                aria-label="Cerrar partidos"
+                position="absolute"
+                top={2}
+                right={3}
+                zIndex={2}
+                color="brand.gray"
+                fontFamily="mono"
+                fontSize="lg"
+                lineHeight={1}
+                cursor="pointer"
+                transition="color 0.2s"
+                _hover={{ color: 'brand.brownLight' }}
+              >
+                ✕
+              </Box>
+
+              <VStack spacing={{ base: 4, md: 6 }} align="stretch">
+                <MatchSlot data={last} label="Último Resultado" labelColor="brand.amber" />
+                <Box h="1px" bg="rgba(255,255,255,0.07)" />
+                <MatchSlot data={next} label="Próximo Partido" labelColor="brand.brown" />
+              </VStack>
+            </MotionBox>
+          ) : (
+            <CollapsedTab last={last} onClick={() => setIsOpen(true)} />
+          )}
+        </AnimatePresence>
+      </Flex>
     )
   }
 

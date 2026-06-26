@@ -4,8 +4,8 @@ import { IoMdStats } from 'react-icons/io'
 
 //Hero
 import ronald1 from '@assets/ronald1.png'
-import paraguay from '@assets/paraguay.webp'
-import talleres from '@assets/talleres.webp'
+import argentina from '@assets/argentina.webp'
+import universitario from '@assets/universitario.webp'
 //Escudos trayectoria
 import escudoTalleres from '@assets/escudos/escudo_talleres.webp'
 import escudoPlatense from '@assets/escudos/escudo_platense.webp'
@@ -34,27 +34,27 @@ import ledsports from '@assets/contact3.webp'
 
 
 export const playerData = {
-  name: 'RONALDO',
-  fullName: 'MARTINEZ',
-  number: 77,
-  position: 'Delantero',
-  positionShort: 'DEL',
-  nationality: 'Paraguay',
-  nationalityFlag: paraguay,
-  age: 30,
-  height: '1.78m',
+  name: 'CAIN',
+  fullName: 'FARA',
+  number: 2,
+  position: 'Defensor Central',
+  positionShort: 'DFC',
+  nationality: 'Argentino',
+  nationalityFlag: argentina,
+  age: 31,
+  height: '1.84m',
   weight: '68kg',
   foot: 'Derecho',
-  birthDate: '25 / 04 / 1996',
-  birthPlace: 'Eusebio Ayala, Paraguay',
-  currentClub: 'Talleres',
-  logoCurrentClub: talleres,
+  birthDate: '06 / 03 / 1994',
+  birthPlace: 'Rosario, Argentina',
+  currentClub: 'Universitario de Deportes',
+  logoCurrentClub: universitario,
   image: ronald1,
 
   stats: [
     { label: 'Velocidad',      value: 91 },
-    { label: 'Definición',     value: 88 },
-    { label: 'Regate',         value: 84 },
+    { label: 'Recuperación',     value: 88 },
+    { label: 'Anticipación',         value: 84 },
     { label: 'Juego Aéreo',    value: 75 },
     { label: 'Presión Alta',   value: 82 },
     { label: 'Visión de Juego',value: 79 },
@@ -64,7 +64,7 @@ export const playerData = {
     { label: 'Partidos',    value: 19 },
     { label: 'Goles',       value: 3 },
     { label: 'Asistencias', value: 2  },
-    { label: 'Tiros al árco', value: 28  },
+    { label: 'Quites', value: 28  },
     { label: 'Min / Part.', value: "1,470'" },
     { label: 'Valoración', value: 7.4  },
 

@@ -8,7 +8,7 @@ const theme = extendTheme({
       brownLight: '#D44545', // rojo claro
       amber:      '#D4A84B', // dorado para pequeños detalles
       dark:       '#0A0505', // oscuro con tono cálido (fondo)
-      gray:       '#A3897A', // gris cálido (texto secundario)
+      gray:       '#aa8f7f', // gris cálido (texto secundario)
       bone:       '#FAF5EB', // crema claro (texto principal)
       boneWarm:   '#F0DCC8', // crema cálido (detalles)
     },
@@ -21,7 +21,7 @@ const theme = extendTheme({
   styles: {
     global: {
       'html, body': {
-        bg: '#0A0505',
+        bg: '#e0c9ab',
         color: '#FAF5EB',
         overflowX: 'hidden',
       },
