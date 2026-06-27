@@ -26,15 +26,15 @@ function BioCard() {
                 fontSize="11px"
                 letterSpacing="0.28em"
                 textTransform="uppercase"
-                color="whiteAlpha.600"
+                color="brand.bone"
                 mb={5}
               >
                 Datos personales
               </Text>
             <Box
-              bg="#0A0505"
+              bg="transparent"
               border="1px solid"
-              borderColor="whiteAlpha.100"
+              borderColor="brand.brown2"
               borderRadius={'10px'}
               p={{ base: 5, md: 6 }}
               h="90%"
@@ -58,7 +58,7 @@ function BioCard() {
                     justify="space-between"
                     align="center"
                     borderBottom="1px solid"
-                    borderColor="whiteAlpha.50"
+                    borderColor="brand.brown3"
                     pb={3}
                     transition="all 0.3s ease"
                     _hover={{ 
@@ -71,7 +71,7 @@ function BioCard() {
                       fontSize="11px"
                       letterSpacing="0.18em"
                       textTransform="uppercase"
-                      color="whiteAlpha.600"
+                      color="brand.bone"
                     >
                       {row.label}
                     </Text>
@@ -113,7 +113,7 @@ function SeasonCards() {
         fontSize="11px"
         letterSpacing="0.28em"
         textTransform="uppercase"
-        color="whiteAlpha.600"
+        color="brand.bone"
         mb={5}
       >
         última temporada
@@ -124,7 +124,7 @@ function SeasonCards() {
             key={s.label}
             ref={(el) => (cardRefs.current[i] = el)}
             border="1px solid"
-            borderColor="whiteAlpha.100"
+            borderColor="brand.brown2"
             borderRadius={'10px'}
             p={5}
             position="relative"
@@ -132,7 +132,7 @@ function SeasonCards() {
             transition="border-color 0.3s, background 0.3s"
             _hover={{
               borderColor: 'brand.brown',
-              bg: 'rgba(19, 67, 139, 0.05)',
+              bg: '#f0dcc828',
             }}
             _before={{
               content: '""', position: 'absolute', bottom: '0px', left: '10px',
@@ -232,7 +232,7 @@ function StatBars() {
                   position="absolute"
                   top={0} left={0}
                   w="100%" h="100%"
-                  bg="linear-gradient(to right, #0b478b, #1460b1)"
+                  bg="linear-gradient(to right, #8b322c, #aa3722)"
                   transformOrigin="left"
                   transform="scaleX(0)"
                 />
@@ -507,13 +507,10 @@ export default function StatsSection() {
       as="section"
       id="estadisticas"
       ref={sectionRef}
-      bg="#0A0505"
+      bg="brand.gray"
       pt={{ base: 16, lg: 20 }}
       pb={{ base: 16, lg: 20 }}
       px={{ base: 5, lg: 10 }}
-      borderTopLeftRadius={{ base: '14px', lg: '22px' }}
-      borderTopRightRadius={{ base: '14px', lg: '22px' }}
-      boxShadow="0 -24px 80px rgba(0,0,0,0.65)"
     >
       <Box maxW="1400px" mx="auto">
         {/* Header */}

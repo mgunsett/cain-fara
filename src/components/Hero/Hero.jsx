@@ -125,8 +125,7 @@ export default function Hero() {
         overflow="hidden"
         bg="brand.gray"
         sx={{
-          maskImage: 'linear-gradient(black 90%, transparent)',
-          WebkitMaskImage: 'linear-gradient(black 90%, transparent)',
+          
           // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
           '@supports (height: 100dvh)': { height: '100dvh' },
         }}
@@ -138,7 +137,7 @@ export default function Hero() {
           inset="-10%"
           zIndex={1}
           pointerEvents="none"
-          background="radial-gradient(ellipse 70% 60% at 65% 50%, rgba(46, 122, 209, 0.14) 0%, transparent 70%)"
+          background="radial-gradient(ellipse 70% 60% at 65% 50%, rgba(236, 111, 53, 0.14) 0%, transparent 70%)"
         />
 
         {/* Player photo */}
@@ -166,7 +165,7 @@ export default function Hero() {
             <Image
               className='player-image' 
               src={playerData.image}
-              alt={`Ronaldo Martínez, delantero profesional de ${playerData.currentClub}`}
+              alt={`Cain Fara, defensor profesional de ${playerData.currentClub}`}
               h="100%"
               maxW={{ base: '100vw', lg: '50vw' }}
               objectFit="contain"
@@ -273,7 +272,7 @@ export default function Hero() {
           position="absolute"
           inset={0}
           zIndex={20}
-          background="radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.65) 100%)"
+          background="radial-gradient(ellipse at center, transparent 25%, rgba(73, 63, 63, 0.65) 100%)"
           pointerEvents="none"
           style={{ opacity: 0.15 }}
         />

@@ -4,6 +4,8 @@ const theme = extendTheme({
   colors: {
     brand: {
       brown:      '#501919', // rojo carmesí (principal Universitario)
+      brown2:      '#50191963',
+      brown3:      '#50191936',
       brownDark:  '#5C0E0E', // rojo profundo
       brownLight: '#D44545', // rojo claro
       amber:      '#D4A84B', // dorado para pequeños detalles
