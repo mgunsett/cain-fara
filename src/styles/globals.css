@@ -34,3 +34,10 @@
     animation: none;
   }
 }
+
+@media screen and (max-width: 408px){
+  .player-image {
+    width: 115vw;
+    max-width: none !important;
+  }
+}

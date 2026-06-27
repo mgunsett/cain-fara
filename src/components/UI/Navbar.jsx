@@ -68,7 +68,7 @@ export default function Navbar() {
         py={{ base: 1.5, lg: 1 }}
         borderRadius={{ base: '18px', lg: '10px' }}
         border="1px solid"
-        borderColor={scrolled ? 'rgba(212,69,69,0.30)' : 'rgba(255,255,255,0.12)'}
+        borderColor={'rgba(255,255,255,0.12)'}
         bg={'rgba(109, 100, 100, 0.55)'}
         backdropFilter="blur(20px) saturate(140%)"
         boxShadow={scrolled
@@ -200,13 +200,22 @@ export default function Navbar() {
             mx="auto"
             mt={3}
             borderRadius="18px"
-            border="1px solid rgba(255,255,255,0.12)"
-            bg="rgba(10,5,5,0.65)"
-            backdropFilter="blur(20px) saturate(140%)"
-            boxShadow="0 10px 34px rgba(0,0,0,0.40)"
+            border="1px solid"
+            borderColor="transparent"
+            bg="rgba(109, 100, 100, 0.55)"
+            backdropFilter="blur(22px) saturate(150%)"
+            boxShadow="0 18px 50px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)"
             overflow="hidden"
+            position="relative"
+            _before={{
+              content: '""',
+              position: 'absolute',
+              top: 0, left: 5, right: 5,
+              h: '1px',
+              bgGradient: 'linear(to-r, transparent, rgba(212,69,69,0.6), transparent)',
+            }}
           >
-            <VStack align="stretch" spacing={0} py={2} px={2}>
+            <VStack align="stretch" spacing={0} py={3} px={3}>
               {navLinks.map((link, i) => (
                 <MotionBox
                   key={link.href}
@@ -215,28 +224,106 @@ export default function Navbar() {
                   transition={{ delay: i * 0.06 }}
                   w="full"
                 >
-                  <Text
+                  <Flex
                     as="a"
                     href={link.href}
                     onClick={(e) => handleLink(e, link.href)}
-                    display="block"
-                    fontFamily="mono"
-                    fontSize="lg"
-                    fontWeight="600"
-                    letterSpacing="wider"
-                    textTransform="uppercase"
-                    color="whiteAlpha.800"
+                    role="group"
+                    align="center"
+                    gap={3}
+                    position="relative"
                     py={3}
-                    px={3}
+                    pl={4}
+                    pr={3}
                     borderRadius="12px"
-                    _hover={{ color: 'brand.brown', bg: 'whiteAlpha.50' }}
-                    transition="color 0.2s, background 0.2s"
                     cursor="pointer"
+                    overflow="hidden"
+                    transition="background 0.25s"
+                    _before={{
+                      content: '""',
+                      position: 'absolute',
+                      left: 0, top: '50%',
+                      transform: 'translateY(-50%) scaleY(0)',
+                      w: '3px', h: '55%',
+                      borderRadius: 'full',
+                      bg: 'brand.brownLight',
+                      transformOrigin: 'center',
+                      transition: 'transform 0.25s ease',
+                    }}
+                    _hover={{
+                      bg: 'whiteAlpha.50',
+                      _before: { transform: 'translateY(-50%) scaleY(1)' },
+                    }}
                   >
-                    {link.label}
-                  </Text>
+                    <Text
+                      fontFamily="mono"
+                      fontSize="2xs"
+                      fontWeight="700"
+                      letterSpacing="widest"
+                      color="brand.amber"
+                      opacity={0.7}
+                      minW="22px"
+                      transition="opacity 0.25s"
+                      _groupHover={{ opacity: 1 }}
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </Text>
+
+                    <Text
+                      flex={1}
+                      fontFamily="mono"
+                      fontSize="lg"
+                      fontWeight="600"
+                      letterSpacing="wider"
+                      textTransform="uppercase"
+                      color="whiteAlpha.800"
+                      transition="color 0.25s, transform 0.25s"
+                      _groupHover={{ color: 'white', transform: 'translateX(4px)' }}
+                    >
+                      {link.label}
+                    </Text>
+
+                  </Flex>
                 </MotionBox>
               ))}
+
+              {/* CTA Contacto */}
+              <MotionBox
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navLinks.length * 0.06 + 0.05 }}
+                px={2}
+                pt={3}
+                mt={2}
+                borderTop="1px solid"
+                borderColor="whiteAlpha.100"
+              >
+                <Box
+                  as="a"
+                  href="#contact"
+                  onClick={(e) => handleLink(e, '#contact')}
+                  display="block"
+                  textAlign="center"
+                  py={3}
+                  borderRadius="8px"
+                  fontFamily="mono"
+                  fontSize="sm"
+                  fontWeight="700"
+                  letterSpacing="widest"
+                  textTransform="uppercase"
+                  color="white"
+                  bg="none"
+                  border="1px solid"
+                  borderColor="brand.boneWarm"
+                  boxShadow="0 px 20px rgba(247, 215, 178, 0.45)"
+                  cursor="pointer"
+                  transition="filter 0.25s, transform 0.25s"
+                  _hover={{ filter: 'brightness(1.15)', transform: 'translateY(-1px)', bg: 'brand.gray' }}
+                  _active={{ transform: 'translateY(0)' }}
+                >
+                  Contacto
+                </Box>
+              </MotionBox>
             </VStack>
           </MotionBox>
         )}

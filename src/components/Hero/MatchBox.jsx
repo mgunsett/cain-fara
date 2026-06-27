@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Box, Flex, Text, Image, HStack, VStack } from '@chakra-ui/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 
 const MotionBox = motion(Box)
 
@@ -93,6 +93,7 @@ function MatchSlot({ data, label, labelColor }) {
 
 function CollapsedTab({ last, onClick }) {
   const hasScore = last?.homeScore !== null && last?.awayScore !== null
+  const reduceMotion = useReducedMotion()
 
   return (
     <MotionBox
@@ -147,7 +148,7 @@ function CollapsedTab({ last, onClick }) {
       {hasScore && (
         <VStack spacing={1.5} align="center">
           <Shield src={last.home.shield} name={last.home.name} size="18px" />
-          <HStack spacing={0.5} justify="center">
+          <Flex spacing={0.5} justify="center" direction="column" align="center">
             <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
               {last.homeScore}
             </Text>
@@ -157,20 +158,24 @@ function CollapsedTab({ last, onClick }) {
             <Text fontFamily="heading" fontSize="md" color="white" lineHeight={1}>
               {last.awayScore}
             </Text>
-          </HStack>
+          </Flex>
           <Shield src={last.away.shield} name={last.away.name} size="18px" />
         </VStack>
       )}
 
-      <Box
+      <MotionBox
         as="span"
-        color="brand.brownLight"
-        fontSize="11px"
-        fontFamily="mono"
+        display="block"
+        color="brand.dark"
+        fontSize="16px"
+        fontFamily="heading"
         lineHeight={1}
+        animate={reduceMotion ? { opacity: 1 } : { x: [0, -5, 0], opacity: [0.5, 1, 0.5] }}
+        transition={reduceMotion ? undefined : { duration: 1.6, ease: 'easeInOut', repeat: Infinity }}
+        _hover={{ color: 'brand.bone' }}
       >
-        ‹
-      </Box>
+        ⟪
+      </MotionBox>
     </MotionBox>
   )
 }
@@ -215,23 +220,23 @@ export function MatchBox({ last, next, variant = 'card' }) {
                 onClick={() => setIsOpen(false)}
                 aria-label="Cerrar partidos"
                 position="absolute"
-                top={2}
+                top={'130px'}
                 right={3}
                 zIndex={2}
-                color="brand.gray"
+                color="brand.dark"
                 fontFamily="mono"
                 fontSize="lg"
                 lineHeight={1}
                 cursor="pointer"
-                transition="color 0.2s"
+                transition="all 0.2s"
                 _hover={{ color: 'brand.brownLight' }}
               >
-                ✕
+                ⟫
               </Box>
 
               <VStack spacing={{ base: 4, md: 6 }} align="stretch">
                 <MatchSlot data={last} label="Último Resultado" labelColor="brand.amber" />
-                <Box h="1px" bg="rgba(255,255,255,0.07)" />
+                <Box h="1px" bg="rgba(255,255,255,0.07)" w="80%" alignSelf="center" />
                 <MatchSlot data={next} label="Próximo Partido" labelColor="brand.brown" />
               </VStack>
             </MotionBox>
@@ -250,9 +255,10 @@ export function MatchBox({ last, next, variant = 'card' }) {
       borderTop="1px solid"
       borderColor='brand.brown'
       px={4}
-      py={3}
+      py={2}
+      mb={-4}
     >
-      <Flex gap={0}>
+      <Flex gap={0} >
         <Box flex={1} pr={3}>
           <MatchSlot data={last} label="Último Resultado" labelColor="brand.amber" />
         </Box>

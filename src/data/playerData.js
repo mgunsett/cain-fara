@@ -48,6 +48,7 @@ export const playerData = {
   birthDate: '06 / 03 / 1994',
   birthPlace: 'Rosario, Argentina',
   currentClub: 'Universitario de Deportes',
+  currentClubShort: 'Universitario',
   logoCurrentClub: universitario,
   image: ronald1,
 

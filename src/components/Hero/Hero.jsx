@@ -1,37 +1,39 @@
 import { useRef, useEffect, useCallback } from 'react'
-import { Box, Text, Flex, VStack, HStack, Image } from '@chakra-ui/react'
+import { Box, Text, Flex, VStack, HStack, Image, useBreakpointValue } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MatchBox from './MatchBox'
 import { playerData } from '../../data/playerData'
 import useMatches from '../../hooks/useMatches'
+import '../../styles/globals.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const MotionBox = motion(Box)
 
 function PlayerPanel() {
+  const currentClub = useBreakpointValue({ base: playerData.currentClubShort, md: playerData.currentClub })
   return (
     <Flex 
-    direction={{base:'column', md:'row'}} 
+    direction='row' 
     justifyContent={'flex-start'} 
     alignItems={'flex-start'} 
-    gap={{base:2,md:4}}
+    gap={{base:4,md:4}}
     >  
       <Text
         fontFamily="heading"
-        fontSize={{ base: '70px', md: '100px' }}
+        fontSize={{ base: '30vw', md: '100px' }}
         lineHeight={0.9}
         color="transparent"
         sx={{ WebkitTextStroke: '2px #883c3c' }}
       >
         {playerData.number}
       </Text>
-      <Box w={{base:'60px',md:"1px"}} h={{base:"1px", md: "70px", lg: "80px"}} bg="brand.brown" />
-      <Flex direction={'column'} justifyContent={'flex-start'} gap={1}>
-        <Flex gap={1}>
-          <Text fontFamily="mono" fontSize={{base:'9px',md:"12px"}} color="brand.boneWarm" fontWeight="700"
+      <Box w='1px' h={{ base: '75px', md: '80px' }} bg="brand.brown" mt={{base: '6px', md:'none'}} />
+      <Flex direction={'column'} justifyContent={'flex-start'} gap={1} mt={{base:'5px',md:'none'}}>
+        <Flex gap={{base:0, md:1}} direction={{base:'column',md:'row'}}>
+          <Text  fontFamily="mono" fontSize={{base:'9px',md:"12px"}} color="brand.boneWarm" fontWeight="700"
             textTransform="uppercase" letterSpacing="widest">
             Posición
           </Text>
@@ -47,9 +49,9 @@ function PlayerPanel() {
           </Text>
         </Flex>
         <Flex justifyContent='flex-start' alignItems={'flex-end'} gap={{base:'8px',md:'10px'}} spacing={1} mt={'3px'} ml={-1}>
-          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '16px', md: '25px' }} h={{base:'20px',md:'28px'}} />
+          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '20px', md: '28px' }} h={{base:'20px',md:'28px'}} />
           <Text fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.boneWarm" letterSpacing="wider">
-            {playerData.currentClub}
+            {currentClub}
           </Text>
         </Flex>
       </Flex>
@@ -130,7 +132,7 @@ export default function Hero() {
         }}
       >
         {/* Warm brown glow — BG layer */}
-        <Box
+        <Box 
           ref={bgGlowRef}
           position="absolute"
           inset="-10%"
@@ -138,40 +140,6 @@ export default function Hero() {
           pointerEvents="none"
           background="radial-gradient(ellipse 70% 60% at 65% 50%, rgba(46, 122, 209, 0.14) 0%, transparent 70%)"
         />
-
-        {/* Ghost text — MID layer */}
-        {/* <Box
-          ref={midLayerRef}
-          position="absolute"
-          inset={0}
-          zIndex={1}
-          display="flex"
-          flexDir="column"
-          alignItems="center"
-          justifyContent={"center"}
-          mt={{base:-10}}
-          pointerEvents="none"
-          userSelect="none"
-        >
-          <Text
-            fontFamily="heading"
-            fontSize={{ base: '30vw', md: '22vw' }}
-            color="transparent"
-            lineHeight={0.85}
-            style={{ WebkitTextStroke: '1px rgba(255,255,255,0.055)' }}
-          >
-            {playerData.name}
-          </Text>
-          <Text
-            fontFamily="heading"
-            fontSize={{ base: '40vw', md: '22vw' }}
-            color="transparent"
-            lineHeight={0.85}
-            style={{ WebkitTextStroke: '1px rgba(43, 51, 100, 0.29)' }}
-          >
-            {playerData.fullName}
-          </Text>
-        </Box> */}
 
         {/* Player photo */}
         <Box
@@ -185,21 +153,22 @@ export default function Hero() {
         >
           <Box
             ref={photoRef}
-            h={{ base: '78vh', lg: '94vh' }}
+            h={{ base: '88vh', lg: '94vh' }}
             sx={{
               // dvh evita el salto al colapsar la barra del navegador en mobile; vh queda de fallback
               '@supports (height: 100dvh)': {
-                height: '78dvh',
+                height: '88dvh',
                 '@media (min-width: 62em)': { height: '94dvh' },
               },
             }}
             style={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
           >
             <Image
+              className='player-image' 
               src={playerData.image}
               alt={`Ronaldo Martínez, delantero profesional de ${playerData.currentClub}`}
               h="100%"
-              maxW={{ base: '95vw', lg: '50vw' }}
+              maxW={{ base: '100vw', lg: '50vw' }}
               objectFit="contain"
               objectPosition="bottom center"
               draggable={false}
@@ -217,27 +186,42 @@ export default function Hero() {
           flexDir="column"
           alignItems={{ base: 'center', lg: 'center' }}
           justifyContent={{ base: 'flex-start', lg: 'flex-start' }}
-          pt={{ base: '40%', lg: '6%' }}
+          pt={{ base: '35%', lg: '6%' }}
         >
-          <Flex as="h1" overflow="hidden" gap={{ base: 2, md: 0 }}>
-            <Text
-              ref={line1Ref}
-              as="span"
-              display="block"
-              fontFamily="heading"
-              fontSize={{ base: '25vw', md: '16vw', lg: '20vw' }}
-              color="brand.boneWarm"
-              lineHeight={0.9}
-              style={{ opacity: 0 }}
-            >
-              {playerData.name}
-            </Text>
+          <Flex 
+          as="h1" 
+          overflow="hidden" 
+          flexDir={{ base: 'column', md: 'row' }}
+          justifyContent={{ base: 'flex-end', lg: 'flex-start' }}
+          alignItems={{ base: 'flex-start', lg: 'flex-start' }}
+          >
+            <Flex>
+              <Text
+                ref={line1Ref}
+                as="span"
+                display="block"
+                fontFamily="heading"
+                fontSize={{ base: '30vw', md: '16vw', lg: '20vw' }}
+                color="brand.boneWarm"
+                lineHeight={0.9}
+                style={{ opacity: 0 }}
+              >
+                {playerData.name}
+              </Text>
+              {/* Player info — bottom left */}
+              <Box
+                display={{ base: 'block', lg: 'none' }}
+                zIndex={15}
+              >
+                <PlayerPanel />
+              </Box>
+            </Flex>
             <Text
               ref={line2Ref}
               as="span"
               display="block"
               fontFamily="heading"
-              fontSize={{ base: '34vw', md: '16vw', lg: '33vw' }}
+              fontSize={{ base: '60vw', md: '16vw', lg: '33vw' }}
               color="brand.brown"
               lineHeight={0.9}
               style={{ opacity: 0 }}
@@ -250,9 +234,10 @@ export default function Hero() {
 
         {/* Player info — bottom left */}
         <Box
+          display={{ base: 'none', lg: 'block' }}
           position="absolute"
-          bottom={{ base: '26%', lg: '40%' }}
-          left={{ base: '5%', lg: '12%' }}
+          bottom={{ base: '69%', lg: '40%' }}
+          left={{ base: '50%', lg: '12%' }}
           zIndex={15}
         >
           <PlayerPanel />
@@ -281,26 +266,6 @@ export default function Hero() {
           <MatchBox last={matches.last} next={matches.next} variant="strip" />
         </Box>
 
-        {/* Scroll indicator */}
-        <MotionBox
-          position="absolute"
-          bottom="50px"
-          left="50%"
-          style={{ translateX: '-50%' }}
-          zIndex={16}
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          display={{ base: 'none', lg: 'flex' }}
-          flexDir="column"
-          alignItems="center"
-          gap={2}
-        >
-          <Box w="1px" h="28px" bg="rgba(255,255,255,0.25)" />
-          <Text fontFamily="mono" fontSize="9px" color="rgba(255,255,255,0.3)"
-                letterSpacing="widest" textTransform="uppercase">
-            Scroll
-          </Text>
-        </MotionBox>
 
         {/* Vignette */}
         <Box
