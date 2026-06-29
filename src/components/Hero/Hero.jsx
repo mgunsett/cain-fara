@@ -116,7 +116,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <Box ref={outerRef} h="200vh" position="relative" zIndex={1} id= 'hero'>
+    <Box ref={outerRef} h="200vh" position="relative" zIndex={1} id= 'hero' bg="brand.gray">
       <Box
         ref={containerRef}
         position="sticky"
