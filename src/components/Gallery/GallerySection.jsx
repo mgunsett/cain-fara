@@ -53,17 +53,17 @@ function Lightbox({ photo, onClose, onPrev, onNext }) {
       />
       
       {/* Navigation wings */}
-      <Box position="absolute" left={50} top={0} bottom={0} w="15%"
+      <Box position="absolute" left={{ base: 50, lg: 80 }} top={0} bottom={0} w="15%"
            display={{ base: 'none', lg: 'flex' }} alignItems="center" justifyContent="center"
            onClick={(e) => { e.stopPropagation(); onPrev() }}
            cursor="pointer" opacity={0.4} _hover={{ opacity: 1 }} transition="opacity 0.2s">
-        <Text fontFamily="heading" fontSize="3xl" color="white">‹</Text>
+        <Text fontFamily="heading" fontSize="4xl" color="white">‹</Text>
       </Box>
-      <Box position="absolute" right={50} top={0} bottom={0} w="15%"
+      <Box position="absolute" right={{ base: 50, lg: 80 }} top={0} bottom={0} w="15%"
            display={{ base: 'none', lg: 'flex' }} alignItems="center" justifyContent="center"
            onClick={(e) => { e.stopPropagation(); onNext() }}
-           cursor="pointer" opacity={0.4} _hover={{ opacity: 1 }} transition="opacity 0.2s">
-        <Text fontFamily="heading" fontSize="3xl" color="white">›</Text>
+           cursor="pointer" opacity={0.4} _hover={{ opacity: 1 }} transition="opacity 0.2s" >
+        <Text fontFamily="heading" fontSize="4xl" color="white">›</Text>
       </Box>
       {/* Close */}
       <Box
@@ -112,7 +112,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
         border="1px solid"
         borderColor={isCenter ? 'rgba(80,25,25,0.45)' : 'whiteAlpha.100'}
         boxShadow={isCenter
-          ? '0 40px 90px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)'
+          ? ' -1px 12px 19px 0px rgba(0,0,0,0.75)'
           : '0 24px 60px rgba(0,0,0,0.45)'}
         transition="border-color 0.4s"
       >
@@ -178,7 +178,7 @@ function GalleryCard({ photo, offset, abs, cardW, spacing, total, index, onFocus
           _hover={{ color: 'brand.brown' }}
           transition="color 0.2s"
         >
-          RM<Box as="span" color="brand.brown">_</Box>
+          CF<Box as="span" color="brand.brown">_</Box>
         </Text>
         </Box>
 
@@ -271,19 +271,12 @@ export default function GallerySection() {
       as="section"
       id="galeria"
       ref={sectionRef}
-      bg="brand.dark"
+      bg="brand.gray"
       minH="100vh"
       py={{ base: 16, lg: 20 }}
       overflow="hidden"
       position="relative"
     >
-      {/* glow ambiental */}
-      <Box
-        position="absolute" top={{base:'16%',md:"10%"}} left="50%" transform="translateX(-50%)"
-        w="70vw" h="40vw" maxW="900px"
-        background="radial-gradient(ellipse, rgba(80,25,25,0.14) 0%, transparent 70%)"
-        pointerEvents="none"
-      />
 
       <Box maxW="1400px" mx="auto" px={{ base: 5, lg: 10 }} position="relative">
         <Flex align="flex-end" justify="space-between" mb={{ base: 8, md: 10 }} ref={titleRef}>
@@ -315,7 +308,7 @@ export default function GallerySection() {
         <Box
           position="absolute" bottom="8%" left="50%" transform="translateX(-50%)"
           w={`${cardW * 0.9}px`} h="40px"
-          background="radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%)"
+          background="radial-gradient(ellipse, rgba(172, 126, 106, 0.27) 0%, transparent 70%)"
           filter="blur(10px)"
           pointerEvents="none"
           zIndex={0}
@@ -352,11 +345,11 @@ export default function GallerySection() {
           })}
         </MotionBox>
 
-        {/* Fades laterales */}
+        {/* Fades laterales
         <Box position="absolute" left={0} top={0} bottom={0} w={{ base: '8%', lg: '14%' }}
              bgGradient="linear(to-r, brand.dark, transparent)" zIndex={30} pointerEvents="none" />
         <Box position="absolute" right={0} top={0} bottom={0} w={{ base: '8%', lg: '14%' }}
-             bgGradient="linear(to-l, brand.dark, transparent)" zIndex={30} pointerEvents="none" />
+             bgGradient="linear(to-l, brand.dark, transparent)" zIndex={30} pointerEvents="none" /> */}
       </Box>
 
       {/* Controles */}
@@ -366,8 +359,8 @@ export default function GallerySection() {
           <Box
             as="button" onClick={prev} aria-label="Anterior"
             boxSize="44px" flexShrink={0}
-            display="flex" alignItems="center" justifyContent="center"
-            border="1px solid" borderColor="whiteAlpha.200" borderRadius="full"
+            pt={'4px'}
+            border="1px solid" borderColor="brand.brown2" borderRadius="full"
             color="whiteAlpha.800" transition="all 0.25s"
             _hover={{ bg: 'brand.brown', borderColor: 'brand.brown', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
@@ -407,11 +400,17 @@ export default function GallerySection() {
 
           {/* Flecha der */}
           <Box
-            as="button" onClick={next} aria-label="Siguiente"
-            boxSize="44px" flexShrink={0}
-            display="flex" alignItems="center" justifyContent="center"
-            border="1px solid" borderColor="whiteAlpha.200" borderRadius="full"
-            color="whiteAlpha.800" transition="all 0.25s"
+            as="button" 
+            onClick={next} 
+            aria-label="Siguiente"
+            boxSize="44px" 
+            flexShrink={0}
+            pt={'4px'}
+            border="1px solid" 
+            borderColor="brand.brown2" 
+            borderRadius="full"
+            color="whiteAlpha.800" 
+            transition="all 0.25s"
             _hover={{ bg: 'brand.brown', borderColor: 'brand.brown', color: 'white' }}
             _active={{ transform: 'scale(0.92)' }}
           >

@@ -120,7 +120,7 @@ export default function VideosSection() {
       ref={sectionRef}
       position="relative"
       minH="100vh"
-      bg="brand.dark"
+      bg="brand.gray"
       px={{ base: 5, md: 12, lg: 40 }}
       pt={{ base: 20, md: '10%' }}
       pb={{base: 12, md: '10%'}}
@@ -143,9 +143,9 @@ export default function VideosSection() {
         aria-hidden
         position="absolute"
         top={{ base: '10%', md: '12%' }}
-        right={{ base: '-6%', md: '2%' }}
+        right={{ base: '-6%', md: '6%' }}
         fontFamily="heading"
-        fontSize={{ base: '40vw', md: '30vw' }}
+        fontSize={{ base: '60vw', md: '30vw' }}
         lineHeight={0.8}
         color="transparent"
         pointerEvents="none"
@@ -233,7 +233,7 @@ export default function VideosSection() {
                   h="100%"
                   borderRadius={'10px'}
                   objectFit="cover"
-                  objectPosition="center 38%"
+                  objectPosition="center 55%"
                   opacity={hovered ? 0 : 1}
                   transition="opacity 0.5s ease, transform 0.7s ease"
                   transform={hovered ? 'scale(1.05)' : 'scale(1)'}

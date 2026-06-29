@@ -37,13 +37,9 @@ export default function Footer() {
     <Box
       ref={ref}
       as="footer"
-      bg="#050810"
+      bg="brand.grayDark"
       py={16}
       px={{ base: 6, md: 12, lg: 20 }}
-       sx={{
-          maskImage: 'linear-gradient(to bottom, transparent 0%, black 12%)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 12%)',
-        }}
     >
       <Flex
         direction={{ base: 'column', md: 'row' }}
@@ -73,13 +69,13 @@ export default function Footer() {
           fontSize="12px"
           letterSpacing="0.12em"
           textTransform="uppercase"
-          color="whiteAlpha.300"
+          color="brand.boneWarm"
           textAlign="center"
         >
           © 2026 Ronaldo Martinez · Todos los derechos reservados
         </Text>
 
-        <Text fontSize="12px" color="rgba(255,255,255,0.3)" letterSpacing="0.05em">
+        <Text fontSize="12px" color="brand.boneWarm" letterSpacing="0.05em">
             Desarrollo Web -{' '} 
             <Link 
             href="https://matiasgunsett.netlify.app/" 
@@ -87,6 +83,7 @@ export default function Footer() {
             color="#2D5A47" 
             _hover={{ borderColor: '#e8d5a370', color: '#e8d5a380' }}
             transition="color 0.3s"
+            fontWeight="600"
             >
               Matias Gunsett <LiaLaptopCodeSolid style={{ marginLeft: '4px', display: 'inline-block', verticalAlign: 'middle', fontSize: '20px', color: '#E8D5A3' }} />
             </Link>

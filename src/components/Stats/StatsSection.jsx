@@ -144,8 +144,8 @@ function SeasonCards() {
             <Text fontFamily="heading" fontSize="4xl" color="white" lineHeight={1} mb={1}>
               {s.value}
             </Text>
-            <Text fontFamily="mono" fontSize="10px" color="brand.gray"
-              textTransform="uppercase" letterSpacing="widest">
+            <Text fontFamily="mono" fontSize="10px" color="brand.brown"
+              textTransform="uppercase" letterSpacing="0.18em">
               {s.label}
             </Text>
           </Box>
@@ -191,20 +191,20 @@ function StatBars() {
   }, [])
 
   return (
-    <Box>
+    <Box >
       <Text
         fontFamily="mono"
         fontSize="11px"
         letterSpacing="0.28em"
         textTransform="uppercase"
-        color="whiteAlpha.600"
+        color="brand.bone"
         mb={5}
       >
         Hablidades
       </Text>
       <Box
         border="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.brown2"
         borderRadius={'10px'}
         p={6}
         position="relative"
@@ -217,12 +217,12 @@ function StatBars() {
           {playerData.stats.map((s, i) => (
             <Box key={s.label}>
               <Flex justify="space-between" mb={1.5}>
-                <Text fontFamily="mono" fontSize="11px" color="white"
-                  textTransform="uppercase" letterSpacing="wider">
+                <Text fontFamily="mono" fontSize="11px" color="brand.bone"
+                  textTransform="uppercase" letterSpacing="0.18em">
                   {s.label}
                 </Text>
                 <Text ref={(el) => (numRefs.current[i] = el)}
-                  fontFamily="heading" fontSize="sm" color="brand.brownLight">
+                  fontFamily="heading" fontSize="sm" color="white" fontWeight={500}>
                   0
                 </Text>
               </Flex>
@@ -232,7 +232,7 @@ function StatBars() {
                   position="absolute"
                   top={0} left={0}
                   w="100%" h="100%"
-                  bg="linear-gradient(to right, #8b322c, #aa3722)"
+                  bg="linear-gradient(to right, #6d2b20d5, #aa3722)"
                   transformOrigin="left"
                   transform="scaleX(0)"
                 />
@@ -290,9 +290,9 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           justify="center"
           position="relative"
           zIndex={1}
-          bg="#120808"
+          bg="brand.gray"
           border="1px solid"
-          borderColor={isActive ? 'brand.brown' : 'whiteAlpha.200'}
+          borderColor={isActive ? 'brand.brown' : 'brand.brown2'}
           boxShadow={isActive ? '0 0 0 4px rgba(80,25,25,0.18), 0 0 26px rgba(80,25,25,0.35)' : 'none'}
           transition="border-color 0.35s, box-shadow 0.35s, transform 0.35s"
           _groupHover={{
@@ -320,9 +320,9 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         px={4}
         pt={5}
         pb={8}
-        bg="#120808"
+        bg="transparent"
         border="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.brown2"
         borderRadius="lg"
         textAlign="center"
         position="relative"
@@ -334,18 +334,19 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
           transition: 'width 0.35s',
         }}
         _groupHover={{
-          borderColor: 'rgba(80,25,25,0.5)',
+          borderColor: 'brand.brown',
           transform: 'translateY(-4px)',
           bg: 'rgba(80,25,25,0.04)',
           _before: { width: '40px' },
-        }}
+        }}  
       >
         <Text
           fontFamily="mono"
           fontSize="10px"
-          color={isActive ? 'brand.brownLight' : 'brand.gray'}
+          color={isActive ? 'brand.brownLight' : 'brand.brownLight2'}
           textTransform="uppercase"
           letterSpacing="0.2em"
+          _groupHover={{ color: 'brand.brownLight' }}
         >
           {club.years}
         </Text>
@@ -355,7 +356,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         <Text
           fontFamily="mono"
           fontSize="10px"
-          color="brand.gray"
+          color="brand.brown"
           textTransform="uppercase"
           letterSpacing="0.18em"
           mt={1}
@@ -377,7 +378,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         )}
 
         {club.info && (
-          <Text fontFamily="mono" fontSize="10px" color="brand.gray" lineHeight={1.5} mt={3}>
+          <Text fontFamily="mono" fontSize="10px" color="brand.darkLight" lineHeight={1.5} mt={3}>
             {club.info}
           </Text>
         )}
@@ -433,8 +434,8 @@ function ClubTimeline() {
   }
 
   return (
-    <Box mt={16}>
-      <Flex align="flex-end" justify="space-between" mb={7}>
+    <Box mt={28}>
+      <Flex align="flex-end" justify="space-between" mb={7} mt={{ base: 0, lg: 6 }}>
         <Box>
           <Text fontFamily="mono" fontSize="10px" color="white"
                   textTransform="uppercase" letterSpacing="widest">
@@ -446,10 +447,10 @@ function ClubTimeline() {
           </Text>
         </Box>
         <HStack spacing={2}>
-          <IconButton aria-label="Anterior" icon={<FiChevronLeft size={18} />}
-                      onClick={() => scrollByDir(-1)} {...arrowProps} />
+          <IconButton aria-label="Anterior" icon={<FiChevronLeft size={18}/>}
+                      onClick={() => scrollByDir(-1)} {...arrowProps} borderColor="brand.brown2" />
           <IconButton aria-label="Siguiente" icon={<FiChevronRight size={18} />}
-                      onClick={() => scrollByDir(1)} {...arrowProps} />
+                      onClick={() => scrollByDir(1)} {...arrowProps} borderColor="brand.brown2" />
         </HStack>
       </Flex>
 
@@ -508,8 +509,8 @@ export default function StatsSection() {
       id="estadisticas"
       ref={sectionRef}
       bg="brand.gray"
-      pt={{ base: 16, lg: 20 }}
-      pb={{ base: 16, lg: 20 }}
+      pt={{ base: 16, lg: 28 }}
+      pb={{ base: 16, lg: 28 }}
       px={{ base: 5, lg: 10 }}
     >
       <Box maxW="1400px" mx="auto">

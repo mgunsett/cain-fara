@@ -7,14 +7,17 @@ import ronald1 from '@assets/ronald1.png'
 import argentina from '@assets/argentina.webp'
 import universitario from '@assets/universitario.webp'
 //Escudos trayectoria
-import escudoTalleres from '@assets/escudos/escudo_talleres.webp'
-import escudoPlatense from '@assets/escudos/escudo_platense.webp'
-import escudoResistencia from '@assets/escudos/escudo_resistencia.webp'
-import escudoStrongest from '@assets/escudos/escudo_strongest.webp'
-import escudoCentralNorte from '@assets/escudos/escudo_central_norte.webp'
-import escudoCapiata from '@assets/escudos/escudo_capiata.webp'
-import escudoCerro from '@assets/escudos/escudo_cerro.webp'
-import escudoParaguay from '@assets/escudos/escudo_paraguay.webp'
+import escudoCentral from '@assets/escudos/escudo_central.webp'
+import escudoJuventud from '@assets/escudos/escudo_juventud.webp'
+import escudoEstudiantes from '@assets/escudos/escudo_cae.webp'
+import escudoFerro from '@assets/escudos/escudo_ferro.webp'
+import escudoAldosivi from '@assets/escudos/escudo_aldosivi.webp'
+import escudoSol from '@assets/escudos/escudo_solamerica.webp'
+import escudoTigre from '@assets/escudos/escudo_tigre.webp'
+import escudoAucas from '@assets/escudos/escudo_aucas.webp'
+import escudoEmelec from '@assets/escudos/escudo_emelec.webp'
+import escudoAtlanta from '@assets/escudos/escudo_atlanta.webp'
+import escudoUniv from '@assets/escudos/escudo_univ.webp'
 //Gallery
 import image1 from '@assets/gallery/image1.webp'
 import image2 from '@assets/gallery/image2.webp'
@@ -23,7 +26,7 @@ import image4 from '@assets/gallery/image4.webp'
 import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
 //Video
-import photoGraph from '@assets/perfil_video.webp'
+import photoGraph from '@assets/photoGraph.png'
 //Prensa
 import logo1 from '@assets/logos/logo1.webp'
 import logo2 from '@assets/logos/logo2.webp'
@@ -31,6 +34,7 @@ import logo3 from '@assets/logos/logo3.webp'
 //Redes
 import transfermkt from '@assets/contact2.svg'
 import ledsports from '@assets/contact3.webp'
+import moon from '@assets/contact4.webp'
 
 
 export const playerData = {
@@ -43,7 +47,7 @@ export const playerData = {
   nationalityFlag: argentina,
   age: 31,
   height: '1.84m',
-  weight: '68kg',
+  weight: '78kg',
   foot: 'Derecho',
   birthDate: '06 / 03 / 1994',
   birthPlace: 'Rosario, Argentina',
@@ -53,88 +57,112 @@ export const playerData = {
   image: ronald1,
 
   stats: [
-    { label: 'Velocidad',      value: 91 },
+    { label: 'Velocidad',      value: 87 },
     { label: 'Recuperación',     value: 88 },
     { label: 'Anticipación',         value: 84 },
-    { label: 'Juego Aéreo',    value: 75 },
+    { label: 'Juego Aéreo',    value: 78 },
     { label: 'Presión Alta',   value: 82 },
     { label: 'Visión de Juego',value: 79 },
   ],
 
   seasonStats: [
-    { label: 'Partidos',    value: 19 },
+    { label: 'Partidos',    value: 22 },
     { label: 'Goles',       value: 3 },
-    { label: 'Asistencias', value: 2  },
-    { label: 'Quites', value: 28  },
-    { label: 'Min / Part.', value: "1,470'" },
-    { label: 'Valoración', value: 7.4  },
+    { label: 'Juego aéreo', value: 34 },
+    { label: 'Quites', value: 58 },
+    { label: 'Min / Part.', value: "1,935'" },
+    { label: 'Valoración', value: 7.32  },
 
   ],
 
   clubs: [
     {
-      name:    'Talleres',
-      country: 'Argentina',
+      name:    'Universitario',
+      country: 'Peru',
       years:   '2025 — Actualidad',
-      logo:    escudoTalleres,
+      logo:    escudoUniv,
       titles:  [],
       info:    '',
     },
     {
-      name:    'Seleccion Mayor',
-      country: 'Paraguay',
-      years:   '2024 — 2026',
-      logo:    escudoParaguay,
-      titles:  [],
-      info:    '',
-    },
-    {
-      name:    'Platense',
+      name:    'Atlánta',
       country: 'Argentina',
       years:   '2024 — 2025',
-      logo:    escudoPlatense,
-      titles:  ['Torneo Apertura 2025'],
-      info:    'Goleador del Torneo',
-    },
-    {
-      name:    'Resistencia SC',
-      country: 'Paraguay',
-      years:   '2022',
-      logo:    escudoResistencia,
+      logo:    escudoAtlanta,
       titles:  [],
       info:    '',
     },
     {
-      name:    'The Strongest',
-      country: 'Bolivia',
-      years:   '2021',
-      logo:    escudoStrongest,
+      name:    'C.S Emelec',
+      country: 'Ecuador',
+      years:   '2023 — 2024',
+      logo:    escudoEmelec,
       titles:  [],
-      info:    'Préstamo',
+      info:    '',
     },
     {
-      name:    'Central Norte',
+      name:    'SD Aucas',
+      country: 'Ecuador',
+      years:   '2022',
+      logo:    escudoAucas,
+      titles:  ['Serie A de Ecuador 2022'],
+      info:    '',
+    },
+    {
+      name:    'Tigre',
       country: 'Argentina',
-      years:   '2019',
-      logo:    escudoCentralNorte,
-      titles:  ['Torneo Regional Federal 2019'],
-      info:    'Préstamo',
+      years:   '2021',
+      logo:    escudoTigre,
+      titles:  ['Primera Nacional 2021'],
+      info:    '',
     },
     {
-      name:    'Capiatá',
+      name:    'Sol de América',
       country: 'Paraguay',
-      years:   '2018',
-      logo:    escudoCapiata,
+      years:   '2020',
+      logo:    escudoSol,
       titles:  [],
       info:    'Préstamo',
     },
     {
-      name:    'Cerro Porteño',
-      country: 'Paraguay',
-      years:   '2015 — 2021',
-      logo:    escudoCerro,
-      titles:  ['Torneo Apertura 2015', 'Torneo Clausura 2017', 'Torneo Apertura 2020'],
-      info:    'Debut profesional ',
+      name:    'Aldosivi',
+      country: 'Argentina',
+      years:   '2019 - 2020',
+      logo:    escudoAldosivi,
+      titles:  [],
+      info:    '',
+    },
+    {
+      name:    'Ferro Carril Oeste',
+      country: 'Argentina',
+      years:   '2018 — 2019',
+      logo:    escudoFerro,
+      titles:  [],
+      info:    'Debut Primera Nacional',
+    },
+    {
+      name:    'Estudiantes de Caseros',
+      country: 'Argentina',
+      years:   '2017 — 2018',
+      logo:    escudoEstudiantes,
+      titles:  [],
+      info:    '',
+    },
+    {
+      name:    'Juventud Antoniana',
+      country: 'Argentina',
+      years:   '2016 — 2017',
+      logo:    escudoJuventud,
+      titles:  [],
+      info:    'Préstamo',
+    },
+    {
+      name:    'Rosario Central',
+      country: 'Argentina',
+      years:   '2016 — 2017',
+      logo:    escudoCentral,
+      titles:  [],
+      info:    'Inferior y Reserva',
     },
   ],
 
@@ -143,7 +171,7 @@ export const playerData = {
       id: 'v1',
       title: 'Platense 2025',
       fullTitle: 'Ronaldo Martinez | Platense 2025 [Highlights]',
-      youtubeId: 'HCs1s_BT7uk',
+      youtubeId: 'QfDCnmF33ic',
       duration: '4:01',
       season: 'Temporada',
       league: 'Liga Argentina',
@@ -155,24 +183,24 @@ export const playerData = {
 
   press: [
     {
-      media: 'El Gráfico',
+      media: 'ESPN',
       logo:  logo1,
-      title: 'Se ha inmortalizado en los libros de récords al convertirse en el máximo goleador del Torneo Clausura 2025',
-      date:  'Diciembre 2025',
-      url:   'https://www.elgrafico.com.ar/articulo/primera-division/95962/cuantas-veces-platense-tuvo-al-goleador-del-campeonato-de-primera-division',
+      title: 'Caín Fara sobre su fichaje por Universitario: "Es el desafío más importante de mi carrera"',
+      date:  'Enero 2026',
+      url:   'https://www.espn.com.ar/futbol/peru/nota/_/id/16146784/cain-fara-universitario-es-el-desafio-mas-importante-de-mi-carrera',
     },
     {
-      media: 'La Voz',
+      media: 'Infobae',
       logo:  logo2,
-      title: 'El delantero paraguayo puso el 1-0 y fue clave en la noche feliz de la “T” ante Newell’s.',
-      date:  'Enero 2026',
+      title: '“Caín Fara será convocado a la selección de Palestina, que desde hace mucho tiempo viene trabajando para sumar al defensa de Universitario.”',
+      date:  'Mayo 2026',
       url:   'https://www.lavoz.com.ar/deportes/futbol/ronaldo-martinez-figura-de-talleres-como-esta-de-la-lesion-y-por-que-festejo-a-lo-cristiano/',
     },
     {
-      media: 'Cba24N',
+      media: 'Libero',
       logo:  logo3,
-      title: 'Convocado por la selección de Paraguay para participar en la próxima ventana internacional de la fecha FIFA',
-      date:  'Marzo 2026',
+      title: '¡Sigue en racha! Caín Fara anotó de cabeza en goleada por 4-1 de Universitario',
+      date:  'Mayo 2026',
       url:   'https://www.cba24n.com.ar/deportes/futbol/talleres/ronaldo-martinez--convocado-a-la-seleccion-de-paraguay-para-la-proxima-ventana-internacional_a69ac304f2128774661b1005d',
     },
   ],
@@ -191,8 +219,8 @@ export const playerData = {
       label: 'Instagram',
       icon: FaInstagram,
       iconBg: FaInstagram,
-      handle: '@ronaldoivan',
-      url: 'https://www.instagram.com/ronaldoivan/',
+      handle: '@caiinfara',
+      url: 'https://www.instagram.com/caiinfara/',
       hoverColor: '#E1306C',
       hoverGradient: 'insta-gradient',
     },
@@ -200,24 +228,24 @@ export const playerData = {
       label: 'TransferMarkt',
       image: transfermkt,
       iconBg: IoMdStats,
-      handle: '@ronaldo-martinez',
-      url: 'https://www.transfermarkt.com.ar/ronaldo-martinez/profil/spieler/567736',
-      hoverColor: 'brand.brownLight',
+      handle: '@cain-fara',
+      url: 'https://www.transfermarkt.com.ar/cain-fara/profil/spieler/619072',
+      hoverColor: '#1c4a91',
     },
   ],
 
   contact: [
     {
       title:      'Representante Deportivo',
-      label:      'Universal Twenty Two',
-      icon:       FaEnvelope,
-      handle:     '@twentytwo_sm',
-      url:        'https://www.instagram.com/twentytwo_sm/',
+      label:      'Moon Sports Group',
+      image: moon,
+      handle:     '@moonsportsgroup_',
+      url:        'https://www.instagram.com/moonsportsgroup_/',
       hoverColor: 'rgba(139,69,19,0.18)',
     },
     {
       title:      'Contacto Marketing',
-      label:      'led sports marketing',
+      label:      'LED Sports Marketing',
       image: ledsports,
       handle:     '@_ledsports',
       url:        'https://www.instagram.com/_ledsports/',

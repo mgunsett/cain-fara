@@ -56,9 +56,9 @@ function PressCard({ article, index }) {
         isExternal
         display="block"
         textDecoration="none"
-        bg="#120808"
+        bg="brand.boneDark"
         border="1px solid"
-        borderColor="whiteAlpha.100"
+        borderColor="brand.brown2"
         borderRadius="lg"
         p={6}
         position="relative"
@@ -74,7 +74,7 @@ function PressCard({ article, index }) {
         _groupHover={{
           borderColor: 'rgba(80,25,25,0.5)',
           transform: 'translateY(-4px)',
-          bg: 'brand.dark',
+          bg: 'linear-gradient(135deg, #a18775, #7e614c)',
           _before: { width: '40px' },
           textDecoration: 'none',
         }}
@@ -84,25 +84,26 @@ function PressCard({ article, index }) {
             <Stars count={article.rating ?? 5} />
             <Box
               px={2.5} py={1}
-              bg="rgba(80,25,25,0.10)"
-              border="1px solid rgba(80,25,25,0.28)"
+              bg="brand.gray"
+              border="1px solid"
+              borderColor="brand.brown2"
               borderRadius="sm"
             >
-              <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
+              <Text fontFamily="mono" fontSize="9px" color="brand.brown"
                 textTransform="uppercase" letterSpacing="0.18em">
                 {article.media}
               </Text>
             </Box>
           </Flex>
 
-          <Text fontFamily="body" fontSize={{base:'xs',md:"md"}} color="boneWarm" lineHeight={1.55}>
+          <Text fontFamily="body" fontSize={{base:'xs',md:"md"}} color="brand.boneLight" lineHeight={1.55}>
             “{article.title}”
           </Text>
 
-          <Text fontFamily="mono" fontSize="11px" color="brand.brownLight"
+          <Text fontFamily="mono" fontSize="11px" color="brand.brown"
             textTransform="uppercase" letterSpacing="0.18em"
             transition="color 0.25s"
-            _groupHover={{ color: 'white' }}>
+            _groupHover={{ color: 'brand.boneWarm' }}>
             Leer más →
           </Text>
         </VStack>
@@ -117,7 +118,7 @@ function PressCard({ article, index }) {
           overflow="hidden"
           align="center"
           justify="center"
-          bg="linear-gradient(135deg, #5C0E0E, #501919)"
+          bg="linear-gradient(135deg, #a18775, #7e614c)"
           border="1px solid"
           borderColor="whiteAlpha.200"
           transition="border-color 0.35s, box-shadow 0.35s"
@@ -145,7 +146,7 @@ function PressCard({ article, index }) {
           <Text fontFamily="heading" fontSize="lg" color="white" lineHeight={1}>
             {article.media}
           </Text>
-          <Text fontFamily="mono" fontSize="10px" color="brand.gray"
+          <Text fontFamily="mono" fontSize="10px" color="brand.brownLight2"
             textTransform="uppercase" letterSpacing="0.18em" mt={0.5}>
             {article.date}
           </Text>
@@ -170,11 +171,37 @@ export default function PressSection() {
       as="section"
       id="prensa"
       ref={sectionRef}
-      bg="#0A0505"
-      pb={{ base: 16, lg: 20 }}
-      pt={0}
+      bg="brand.grayDark"
+      position="relative"
+      zIndex={1}
+      pb={{ base: 16, lg: 40 }}
+      pt={{ base: 16, lg: 40 }}
       px={{ base: 5, lg: 10 }}
     >
+      {/* Onda decorativa superior (esta sección "sube" hacia la anterior) */}
+      <Box
+        zIndex={2}
+        as="svg"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        preserveAspectRatio="none"
+        position="absolute"
+        left={0}
+        bottom={-20}
+        w="100%"
+        h={{ base: '100px', md: '70px', lg: '120px' }}
+        color="brand.grayDark"
+        display="block"
+        pointerEvents="none"
+        zIndex={1}
+      >
+        <path
+          fill="currentColor"
+          d="M0,128L120,144C240,160,480,192,720,192C960,192,1200,160,1320,144L1440,128L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"
+        />
+      </Box>
+
       <Box maxW="1400px" mx="auto">
         {/* Header */}
         <Flex align="flex-end" justify="space-between" mb={4} ref={titleRef}>

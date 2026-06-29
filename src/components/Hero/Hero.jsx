@@ -256,7 +256,7 @@ export default function Hero() {
         {/* MatchBox mobile */}
         <Box
           position="absolute"
-          bottom={{base:"30px",md:"40px"}}
+          bottom={{base:"10px",md:"40px"}}
           left={0}
           right={0}
           zIndex={15}
