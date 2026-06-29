@@ -59,7 +59,7 @@ export default function Footer() {
             letterSpacing="0.08em"
             color="white"
           >
-            RM
+            CF
             <Box as="span" color="brand.brown" ml="1px">_</Box>
           </Text>
         </Box>
@@ -72,7 +72,7 @@ export default function Footer() {
           color="brand.boneWarm"
           textAlign="center"
         >
-          © 2026 Ronaldo Martinez · Todos los derechos reservados
+          © 2026 Cain Fara · Todos los derechos reservados
         </Text>
 
         <Text fontSize="12px" color="brand.boneWarm" letterSpacing="0.05em">
