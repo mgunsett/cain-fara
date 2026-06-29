@@ -21,16 +21,16 @@ const emptySlot = {
 }
 
 const labelStyle = {
-  fontFamily: 'mono', fontSize: '10px', color: 'brand.gray',
+  fontFamily: 'mono', fontSize: '10px', color: 'brand.boneWarm',
   textTransform: 'uppercase', letterSpacing: 'widest', mb: 1,
 }
 
 const inputStyle = {
-  bg: 'brand.dark',
+  bg: 'brand.gray',
   border: '1px solid',
-  borderColor: 'brand.brownDark',
+  borderColor: 'transparent',
   borderRadius: 'md',
-  fontFamily: 'mono', fontSize: 'sm', color: 'white',
+  fontFamily: 'mono',  fontSize: 'md', color: 'brand.brown',
   h: '42px',
   _hover: { borderColor: 'brand.gray' },
   _focus: { borderColor: 'brand.brown', boxShadow: '0 0 0 1px rgba(80,25,25,0.4)' },
@@ -86,7 +86,7 @@ function ShieldUpload({ label, currentUrl, onFileChange }) {
             <FiUpload color="#D44545" size={16} />
           </Flex>
         )}
-        <Text fontFamily="mono" fontSize="11px" color="brand.gray">
+        <Text fontFamily="mono" fontSize="12px" color="brand.boneWarm" letterSpacing="wider">
           {displayUrl ? 'Cambiar imagen' : 'Subir escudo'}
         </Text>
       </Flex>
@@ -104,16 +104,16 @@ function MatchForm({ slot, label, data, onSave, uploading }) {
 
   return (
     <Box>
-      <Text fontFamily="mono" fontSize="10px" color="brand.brown"
+      <Text fontFamily="mono" fontSize="12px" color="brand.brown"
             textTransform="uppercase" letterSpacing="widest" mb={4}>
         {label}
       </Text>
 
       <Grid templateColumns={{ base: '1fr', md: '1fr auto 1fr' }} gap={{ base: 4, md: 3 }} alignItems="start">
         {/* Local */}
-        <VStack spacing={3} align="stretch">
-          <Box px={3} py={2} bg="rgba(80,25,25,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
-            <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
+        <VStack spacing={3  } align="stretch">
+          <Box px={4} py={4} bg="brand.grayDark" borderRadius="md" border="1px solid" borderColor="brand.brown3">
+            <Text fontFamily="mono" fontSize="11px" color="brand.brown"
                   textTransform="uppercase" letterSpacing="widest" mb={2}>
               Local
             </Text>
@@ -141,8 +141,8 @@ function MatchForm({ slot, label, data, onSave, uploading }) {
 
         {/* Visitante */}
         <VStack spacing={3} align="stretch">
-          <Box px={3} py={2} bg="rgba(80,25,25,0.05)" borderRadius="md" border="1px solid" borderColor="brand.brownDark">
-            <Text fontFamily="mono" fontSize="9px" color="brand.brownLight"
+          <Box px={4} py={4} bg="brand.grayDark" borderRadius="md" border="1px solid" borderColor="brand.brown3">
+            <Text fontFamily="mono" fontSize="11px" color="brand.brown"
                   textTransform="uppercase" letterSpacing="widest" mb={2}>
               Visitante
             </Text>
@@ -242,8 +242,8 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
         borderColor="brand.brownDark"
       >
         <Badge
-          fontFamily="mono" fontSize="9px"
-          bg={slot === 'last' ? 'brand.amberLight' : 'brand.brownLight'}
+          fontFamily="mono" fontSize={slot === 'last' ? '10px' : '10px'}
+          bg={'brand.gray'}
           color={slot === 'last' ? 'brand.amber' : 'brand.brownLight'}
           border="1px solid"
           borderColor={slot === 'last' ? 'brand.amber' : 'brand.brownLight'}
@@ -254,16 +254,16 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
         <HStack spacing={1}>
           <IconButton
             icon={<FiEdit2 size={14} />}
-            size="sm" variant="ghost"
-            color="brand.gray"
+            size="sm" variant='solid'
+            color="brand.brownLight"
             _hover={{ color: 'brand.brownLight', bg: 'rgba(80,25,25,0.1)' }}
             aria-label="Editar"
             onClick={onEdit}
           />
           <IconButton
             icon={<FiTrash2 size={14} />}
-            size="sm" variant="ghost"
-            color="brand.gray"
+            size="sm" variant='solid'
+            color="brand.brownLight "
             _hover={{ color: 'red.400', bg: 'rgba(255,0,0,0.06)' }}
             aria-label="Eliminar"
             onClick={onDelete}
@@ -342,7 +342,7 @@ function MatchPreviewCard({ slot, data, label, onEdit, onDelete }) {
       >
         <HStack spacing={3}>
           {data.match_date && (
-            <Text fontFamily="mono" fontSize="10px" color="brand.gray" letterSpacing="wider">
+            <Text fontFamily="mono" fontSize="10px" color="brand.boneWarm" letterSpacing="wider">
               {data.match_date}
             </Text>
           )}
@@ -485,7 +485,7 @@ export default function AdminPage() {
 
   if (loading) {
     return (
-      <Box minH="100vh" bg="brand.dark" display="flex" alignItems="center" justifyContent="center">
+      <Box minH="100vh" bg="brand.gray" display="flex" alignItems="center" justifyContent="center">
         <Spinner color="brand.brown" size="lg" />
       </Box>
     )
@@ -493,19 +493,19 @@ export default function AdminPage() {
 
   if (!user) {
     return (
-      <Box minH="100vh" bg="brand.dark" display="flex" alignItems="center" justifyContent="center" px={4}>
+      <Box minH="100vh" bg="brand.gray" display="flex" alignItems="center" justifyContent="center" px={4}>
         <Box
           w="full" maxW="380px"
-          bg="rgba(11,42,74,0.4)"
+          bg="brand.grayDark2"
           border="1px solid"
-          borderColor="brand.brownDark"
+          borderColor="brand.brown2"
           borderRadius="xl"
           p={{ base: 6, md: 8 }}
           backdropFilter="blur(10px)"
         >
           <VStack spacing={1} mb={6}>
-            <Text fontFamily="heading" fontSize="3xl" color="white">RONALDO <Text as="span" color="brand.brown">MARTINEZ</Text> _</Text>
-            <Text fontFamily="mono" fontSize="10px" color="brand.gray"
+            <Text fontFamily="heading" fontSize="5xl" color="white">CAIN <Text as="span" color="brand.brown">FARA</Text> _</Text>
+            <Text fontFamily="mono" fontSize="14px" color="brand.boneWarm"
                   letterSpacing="widest" textTransform="uppercase">
               Panel de administración
             </Text>
@@ -513,11 +513,16 @@ export default function AdminPage() {
           <VStack spacing={4}>
             <FormControl>
               <FormLabel {...labelStyle}>Email</FormLabel>
-              <Input {...inputStyle} type="email" value={email}
-                     onChange={(e) => setEmail(e.target.value)} placeholder="admin@ejemplo.com" />
+              <Input 
+              {...inputStyle} 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} 
+              placeholder="admin@ejemplo.com"
+              />
             </FormControl>
             <FormControl>
-              <FormLabel {...labelStyle}>Contraseña</FormLabel>
+              <FormLabel {...labelStyle} color="brand.boneWarm">Contraseña</FormLabel>
               <Input {...inputStyle} type="password" value={password}
                      onChange={(e) => setPassword(e.target.value)}
                      onKeyDown={(e) => e.key === 'Enter' && handleLogin()} />
@@ -540,35 +545,36 @@ export default function AdminPage() {
   }
 
   return (
-    <Box minH="100vh" bg="brand.dark" py={{ base: 6, md: 10 }} px={{ base: 4, md: 6, lg: 10 }}>
+    <Box minH="100vh" bg="brand.gray" py={{ base: 6, md: 10 }} px={{ base: 4, md: 6, lg: 10 }}>
       <Box maxW="900px" mx="auto">
         {/* Header */}
         <Flex align="center" justify="space-between" mb={{ base: 6, md: 8 }}>
           <Box>
             <Text fontFamily="heading" fontSize={{ base: '2xl', md: '3xl' }} color="white" lineHeight={1}>
-              RM_ Admin
+              CAIN <Text as="span" color="brand.brown">FARA</Text> _
             </Text>
             <HStack spacing={2} mt={2}>
               <Badge
                 fontFamily="mono" fontSize="9px" bg="rgba(80,25,25,0.15)"
-                color="brand.brownLight" border="1px solid rgba(80,25,25,0.3)"
+                color="brand.brown" border="1px solid rgba(80,25,25,0.3)"
                 px={2} py={0.5} letterSpacing="widest"
               >
                 Partidos
               </Badge>
-              <Text fontFamily="mono" fontSize="10px" color="brand.gray"
+              <Text fontFamily="mono" fontSize="12px" color="brand.boneWarm" letterSpacing="wider" textTransform="uppercase"
                     display={{ base: 'none', sm: 'block' }}>
                 {user.email}
               </Text>
             </HStack>
           </Box>
           <Button
-            variant="ghost"
-            color="brand.gray"
+            variant='solid' size="sm" borderRadius="md"
+            bg="transparent" border="1px solid" borderColor="brand.brownLight"
+            color="brand.brownLight"
             fontFamily="mono" fontSize="xs"
             letterSpacing="widest" textTransform="uppercase"
             leftIcon={<FiLogOut />}
-            _hover={{ color: 'white', bg: 'rgba(80,25,25,0.1)' }}
+            _hover={{ color: 'brand.brownLight2', borderColor: 'brand.brownLight2', bg: 'transparent' }}
             onClick={handleLogout}
           >
             <Text display={{ base: 'none', sm: 'block' }}>Salir</Text>
@@ -579,7 +585,7 @@ export default function AdminPage() {
 
         {/* Forms with tabs */}
         <Box
-          bg="rgba(11,42,74,0.25)"
+          bg="brand.grayDark2"
           border="1px solid"
           borderColor="brand.brownDark"
           borderRadius="xl"
@@ -594,7 +600,7 @@ export default function AdminPage() {
             <TabList mb={5} gap={2}>
               <Tab
                 fontFamily="mono" fontSize="11px" letterSpacing="widest"
-                textTransform="uppercase" color="brand.gray"
+                textTransform="uppercase" color="brand.boneWarm"
                 borderRadius="md" px={4} py={2}
                 _selected={{ color: 'white', bg: 'brand.brown' }}
                 _hover={{ color: 'white' }}
@@ -603,7 +609,7 @@ export default function AdminPage() {
               </Tab>
               <Tab
                 fontFamily="mono" fontSize="11px" letterSpacing="widest"
-                textTransform="uppercase" color="brand.gray"
+                textTransform="uppercase" color="brand.boneWarm"
                 borderRadius="md" px={4} py={2}
                 _selected={{ color: 'white', bg: 'brand.brown' }}
                 _hover={{ color: 'white' }}

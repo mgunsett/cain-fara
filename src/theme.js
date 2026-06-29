@@ -12,6 +12,7 @@ const theme = extendTheme({
       amber:      '#D4A84B', // dorado para pequeños detalles
       dark:       '#0A0505', // oscuro con tono cálido (fondo)
       darkLight:  '#615d5dbb',
+      grayDark2:  '#83634d88',
       grayDark:   '#a18775',
       gray:       '#aa8f7f', // gris cálido (texto secundario)
       bone:       '#FAF5EB', // crema claro (texto principal)
