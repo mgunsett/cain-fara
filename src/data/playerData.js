@@ -172,6 +172,8 @@ export const playerData = {
       title: 'Platense 2025',
       fullTitle: 'Ronaldo Martinez | Platense 2025 [Highlights]',
       tiktokId: '7626945711040449809',
+      tiktokId2: '7504079891466390790',
+      tiktokId3: '7635149813025099025',
       duration: '4:01',
       season: 'Temporada',
       league: 'Liga Argentina',
