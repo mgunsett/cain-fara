@@ -47,7 +47,7 @@ export const playerData = {
   nationalityFlag: argentina,
   age: 31,
   height: '1.84m',
-  weight: '78kg',
+  weight: '82 kg',
   foot: 'Derecho',
   birthDate: '06 / 03 / 1994',
   birthPlace: 'Rosario, Argentina',
@@ -171,7 +171,7 @@ export const playerData = {
       id: 'v1',
       title: 'Platense 2025',
       fullTitle: 'Ronaldo Martinez | Platense 2025 [Highlights]',
-      youtubeId: 'QfDCnmF33ic',
+      tiktokId: '7626945711040449809',
       duration: '4:01',
       season: 'Temporada',
       league: 'Liga Argentina',
@@ -183,11 +183,18 @@ export const playerData = {
 
   press: [
     {
-      media: 'ESPN',
+      media: 'CONMEBOL Libertadores',
       logo:  logo1,
-      title: 'Caín Fara sobre su fichaje por Universitario: "Es el desafío más importante de mi carrera"',
-      date:  'Enero 2026',
-      url:   'https://www.espn.com.ar/futbol/peru/nota/_/id/16146784/cain-fara-universitario-es-el-desafio-mas-importante-de-mi-carrera',
+      title: 'El 11 ideal de la Jornada 3. El defensor de “la Crema” aportó en defensa y ataque, anotando el primero en la victoria 4-2 sobre Nacional en Perú.',
+      date:  'Abril 2026',
+      url:   'https://gol.conmebol.com/libertadores/es/news/los-11-mejores-el-equipo-ideal-de-la-jornada-3-de-la-conmebol-libertadores',
+    },
+    {
+      media: 'Liga1 TeApuesto',
+      logo:  logo3,
+      title: 'Ellos son los elegidos para integrar el XI Ideal @adidaspe por su gran desempeño sostenido durante todo el Torneo Apertura de la #Liga1TeApuesto.',
+      date:  'Junio 2026',
+      url:   'https://www.instagram.com/p/DZahNWZO3Bl/',
     },
     {
       media: 'Infobae',
@@ -195,13 +202,6 @@ export const playerData = {
       title: '“Caín Fara será convocado a la selección de Palestina, que desde hace mucho tiempo viene trabajando para sumar al defensa de Universitario.”',
       date:  'Mayo 2026',
       url:   'https://www.lavoz.com.ar/deportes/futbol/ronaldo-martinez-figura-de-talleres-como-esta-de-la-lesion-y-por-que-festejo-a-lo-cristiano/',
-    },
-    {
-      media: 'Libero',
-      logo:  logo3,
-      title: '¡Sigue en racha! Caín Fara anotó de cabeza en goleada por 4-1 de Universitario',
-      date:  'Mayo 2026',
-      url:   'https://www.cba24n.com.ar/deportes/futbol/talleres/ronaldo-martinez--convocado-a-la-seleccion-de-paraguay-para-la-proxima-ventana-internacional_a69ac304f2128774661b1005d',
     },
   ],
 

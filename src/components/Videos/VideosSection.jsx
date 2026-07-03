@@ -214,7 +214,7 @@ export default function VideosSection() {
             }}
           >
             
-            <AspectRatio ratio={{ base: 4 / 5, md: 15 / 7 }}>
+            <AspectRatio ratio={{ base: 9 / 16, md: 15 / 7 }}>
               <Box
                 position="relative"
                 overflow="hidden"
@@ -239,11 +239,11 @@ export default function VideosSection() {
                   transform={hovered ? 'scale(1.05)' : 'scale(1)'}
                 />
 
-                {/* preview YouTube muteado al hover */}
+                {/* preview TikTok muteado al hover */}
                 {hovered && (
                   <Box
                     as="iframe"
-                    src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${video.youtubeId}&controls=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&start=8`}
+                    src={`https://www.tiktok.com/player/v1/${video.tiktokId}?autoplay=1&muted=1&loop=1&controls=0&progress_bar=0&play_button=0&volume_control=0&fullscreen_button=0&timestamp=0&rel=0&native_context_menu=0&closed_caption=0`}
                     title={video.title}
                     allow="autoplay; encrypted-media"
                     position="absolute"
@@ -255,7 +255,7 @@ export default function VideosSection() {
                       transform: 'translate(-50%, -50%)',
                       minWidth: '100%',
                       minHeight: '100%',
-                      aspectRatio: '16 / 9',
+                      aspectRatio: '9 / 16',
                     }}
                   />
                 )}
@@ -450,17 +450,17 @@ export default function VideosSection() {
             </Box>
             <MotionBox
               w="100%"
-              maxW="1100px"
+              maxW={{ base: 'calc(85vh * 9 / 16)', md: '1100px' }}
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
               boxShadow="0 40px 120px rgba(0,0,0,0.7)"
             >
-              <AspectRatio ratio={16 / 9}>
+              <AspectRatio ratio={{ base: 9 / 16, md: 16 / 9 }}>
                 <Box
                   as="iframe"
-                  src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0`}
+                  src={`https://www.tiktok.com/player/v1/${video.tiktokId}?autoplay=1&rel=0`}
                   title={video.fullTitle}
                   border="none"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
