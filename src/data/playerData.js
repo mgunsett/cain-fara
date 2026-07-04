@@ -26,7 +26,9 @@ import image4 from '@assets/gallery/image4.webp'
 import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
 //Video
-import photoGraph from '@assets/photoGraph.png'
+import photoGraph from '@assets/photoGraph.webp'
+import photoGraph2 from '@assets/photoGraph2.webp'
+import photoGraph3 from '@assets/photoGraph3.webp'
 //Prensa
 import logo1 from '@assets/logos/logo1.webp'
 import logo2 from '@assets/logos/logo2.webp'
@@ -183,7 +185,7 @@ export const playerData = {
       tiktokId: '7504079891466390790',
       season: 'Jugadas',
       category: 'Resumen',
-      cover: photoGraph,
+      cover: photoGraph2,
     },
     {
       id: 'v3',
@@ -192,7 +194,7 @@ export const playerData = {
       tiktokId: '7635149813025099025',
       season: 'Momentos',
       category: 'Highlights',
-      cover: photoGraph,
+      cover: photoGraph3,
     },
   ],
 
