@@ -41,9 +41,12 @@ export function VideoCard({ video, index = 0, onOpen }) {
       transition="transform 0.5s ease, filter 0.5s ease"
       transform={hovered ? 'translateY(-6px)' : 'translateY(0)'}
       sx={{
-        filter: hovered
-          ? 'drop-shadow(0 30px 55px rgba(0,0,0,0.55))'
-          : 'drop-shadow(0 18px 40px rgba(0,0,0,0.45))',
+        filter: {
+          base: 'none',
+          md: hovered
+            ? 'drop-shadow(0 30px 55px rgba(0,0,0,0.55))'
+            : 'drop-shadow(0 18px 40px rgba(0,0,0,0.45))',
+        },
       }}
     >
       <AspectRatio ratio={9 / 16}>
@@ -92,32 +95,32 @@ export function VideoCard({ video, index = 0, onOpen }) {
           )}
 
           {/* gradiente + viñeta + scanlines */}
-          <Box
-            position="absolute"
-            inset={0}
-            pointerEvents="none"
-            bg="linear-gradient(180deg, rgba(10,5,5,0.15) 0%, rgba(10,5,5,0.1) 40%, rgba(10,5,5,0.85) 100%)"
-          />
-          <Box
-            position="absolute"
-            inset={0}
-            pointerEvents="none"
-            background="radial-gradient(ellipse at center, transparent 42%, rgba(3,6,10,0.8) 125%)"
-            opacity={hovered ? 1 : 0.4}
-            transition="opacity 0.5s ease"
-          />
-          <Box
-            position="absolute"
-            inset={0}
-            pointerEvents="none"
-            zIndex={2}
-            opacity={hovered ? 0.5 : 0.22}
-            transition="opacity 0.5s ease"
-            sx={{
-              background:
-                'repeating-linear-gradient(180deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 2px, transparent 4px)',
-            }}
-          />
+            <Box
+              position="absolute"
+              inset={0}
+              pointerEvents="none"
+              bg="linear-gradient(180deg, rgba(10,5,5,0.15) 0%, rgba(10,5,5,0.1) 40%, rgba(10,5,5,0.85) 100%)"
+            />
+            <Box
+              position="absolute"
+              inset={0}
+              pointerEvents="none"
+              background="radial-gradient(ellipse at center, transparent 42%, rgba(3,6,10,0.8) 125%)"
+              opacity={hovered ? 1 : 0.4}
+              transition="opacity 0.5s ease"
+            />
+            <Box
+              position="absolute"
+              inset={0}
+              pointerEvents="none"
+              zIndex={2}
+              opacity={hovered ? 0.5 : 0.22}
+              transition="opacity 0.5s ease"
+              sx={{
+                background:
+                  'repeating-linear-gradient(180deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 2px, transparent 4px)',
+              }}
+            />
 
           {/* letterbox al hover */}
           {/* <Box position="absolute" top={0} left={0} right={0} h={hovered ? '16px' : '0px'} bg="rgba(3,6,10,0.95)" transition="height 0.5s cubic-bezier(0.22,1,0.36,1)" pointerEvents="none" zIndex={3} />

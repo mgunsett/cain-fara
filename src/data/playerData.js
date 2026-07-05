@@ -25,6 +25,8 @@ import image3 from '@assets/gallery/image3.webp'
 import image4 from '@assets/gallery/image4.webp'
 import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
+import image7 from '@assets/gallery/image7.webp'
+import image8 from '@assets/gallery/image8.webp'
 //Video
 import photoGraph from '@assets/photoGraph.webp'
 import photoGraph2 from '@assets/photoGraph2.webp'
@@ -171,28 +173,28 @@ export const playerData = {
   videos: [
     {
       id: 'v1',
-      title: 'Platense 2025',
-      fullTitle: 'Cain Fara | Platense 2025 [Highlights]',
+      title: 'Clásico vs Alianza Lima',
+      fullTitle: 'Cain Fara | Clásico vs Alianza Lima [Highlights]',
       tiktokId: '7626945711040449809',
-      season: 'Platense',
+      season: 'Clásico',
       category: 'Highlights',
       cover: photoGraph,
     },
     {
       id: 'v2',
-      title: 'Jugadas destacadas',
-      fullTitle: 'Cain Fara | Jugadas destacadas',
+      title: "Atlanta '25",
+      fullTitle: 'Cain Fara | Atlanta 2025 [Highlights]',
       tiktokId: '7504079891466390790',
-      season: 'Jugadas',
+      season: 'Atlanta',
       category: 'Resumen',
       cover: photoGraph2,
     },
     {
       id: 'v3',
-      title: 'Mejores momentos',
-      fullTitle: 'Cain Fara | Mejores momentos',
+      title: 'Libertadores 2026',
+      fullTitle: 'Cain Fara | Libertadores 2026 [Highlights]',
       tiktokId: '7635149813025099025',
-      season: 'Momentos',
+      season: 'Gol vs Nacional',
       category: 'Highlights',
       cover: photoGraph3,
     },
@@ -209,9 +211,9 @@ export const playerData = {
     {
       media: 'Liga1 TeApuesto',
       logo:  logo3,
-      title: 'Ellos son los elegidos para integrar el XI Ideal @adidaspe por su gran desempeño sostenido durante todo el Torneo Apertura de la #Liga1TeApuesto.',
+      title: 'Cain Fara cerró su primer semestre en Universitario integrando el XI Ideal de la #Liga1TeApuesto. 🛡️⚽',
       date:  'Junio 2026',
-      url:   'https://www.instagram.com/p/DZahNWZO3Bl/',
+      url:   'https://www.instagram.com/p/DZs3E9lJe_w/',
     },
     {
       media: 'Infobae',
@@ -223,12 +225,14 @@ export const playerData = {
   ],
 
   gallery: [
-    { id: 1, src: image1, alt: 'Ronaldo Martínez disputando la pelota en la Liga Profesional 2024', caption: 'Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
-    { id: 2, src: image2, alt: 'Ronaldo Martínez celebrando un gol ante Racing',                   caption: 'Festejo ante Racing',    category: 'Festejo', aspect: 'tall' },
-    { id: 3, src: image3, alt: 'Ronaldo Martínez durante el entrenamiento de pretemporada 2025',    caption: 'Pretemporada 2025',       category: 'Entrenamiento', aspect: 'square' },
-    { id: 4, src: image4, alt: 'Ronaldo Martínez en partido de Copa Argentina 2024',                caption: 'Copa Argentina 2024',     category: 'Partido', aspect: 'wide' },
-    { id: 5, src: image5, alt: 'Ronaldo Martínez junto al plantel de Talleres 2024',                caption: 'Plantel Talleres 2024',   category: 'Equipo',  aspect: 'wide' },
-    { id: 6, src: image6, alt: 'Ronaldo Martínez en sesión fotográfica oficial 2024',               caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
+    { id: 1, src: image1, alt: 'Cain Fara disputando la pelota en la Liga Profesional 2024', caption: 'Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
+    { id: 2, src: image2, alt: 'Cain Fara celebrando un gol ante Racing',                   caption: 'Festejo ante Racing',    category: 'Festejo', aspect: 'tall' },
+    { id: 3, src: image3, alt: 'Cain Fara durante el entrenamiento de pretemporada 2025',    caption: 'Pretemporada 2025',       category: 'Entrenamiento', aspect: 'square' },
+    { id: 4, src: image4, alt: 'Cain Fara en partido de Copa Argentina 2024',                caption: 'Copa Argentina 2024',     category: 'Partido', aspect: 'wide' },
+    { id: 5, src: image5, alt: 'Cain Fara junto al plantel de Talleres 2024',                caption: 'Plantel Talleres 2024',   category: 'Equipo',  aspect: 'wide' },
+    { id: 6, src: image6, alt: 'Cain Fara en sesión fotográfica oficial 2024',               caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
+    { id: 7, src: image7, alt: 'Cain Fara en acción durante un partido de la Liga Profesional 2024', caption: 'Acción en Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
+    { id: 8, src: image8, alt: 'Cain Fara celebrando un gol en la Copa Argentina 2024', caption: 'Celebración en Copa Argentina 2024', category: 'Festejo', aspect: 'tall' },
   ],
 
   socialMedia: [

@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { Box, Flex, Text, AspectRatio } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiX } from 'react-icons/fi'
+import { FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -137,9 +137,9 @@ export default function VideosSection() {
         aria-hidden
         position="absolute"
         top={{ base: '10%', md: '12%' }}
-        right={{ base: '-6%', md: '6%' }}
+        right={{ base: '-6%', md: '8%' }}
         fontFamily="heading"
-        fontSize={{ base: '60vw', md: '30vw' }}
+        fontSize={{ base: '60vw', md: '40vw' }}
         lineHeight={0.8}
         color="transparent"
         pointerEvents="none"
@@ -179,10 +179,10 @@ export default function VideosSection() {
               onScroll={handleScroll}
               overflowX="auto"
               scrollSnapType="x mandatory"
-              bg='brand.gray'
+              bg='transparent'
               gap={4}
-              px="9%"
-              pb={1}
+              px="0%"
+              
               sx={{
                 scrollbarWidth: 'none',
                 '::-webkit-scrollbar': { display: 'none' },
@@ -196,21 +196,43 @@ export default function VideosSection() {
               ))}
             </Flex>
 
-            {/* dots */}
-            <Flex justify="center" align="center" gap={2} mt={6}>
-              {videos.map((v, i) => (
-                <Box
-                  key={v.id}
-                  as="button"
-                  aria-label={`Ir al video ${i + 1}`}
-                  onClick={() => goTo(i)}
-                  h="7px"
-                  w={i === active ? '24px' : '7px'}
-                  borderRadius="full"
-                  bg={i === active ? 'brand.brown' : 'whiteAlpha.500'}
-                  transition="all 0.4s cubic-bezier(0.22,1,0.36,1)"
-                />
-              ))}
+            {/* flechas indicadoras */}
+            <Flex justify="center" align="center" gap={5} mt={6}>
+              <Box
+                as="button"
+                aria-label="Video anterior"
+                onClick={() => goTo(active - 1)}
+                isDisabled={active === 0}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color={active === 0 ? 'whiteAlpha.300' : 'brand.brown'}
+                pointerEvents={active === 0 ? 'none' : 'auto'}
+                transition="color 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1)"
+                _active={{ transform: 'translateX(-3px)' }}
+              >
+                <Box as={FiChevronLeft} fontSize="22px" />
+              </Box>
+
+              <Text fontFamily="mono" fontSize="11px" color="whiteAlpha.700" letterSpacing="wider" minW="42px" textAlign="center">
+                {String(active + 1).padStart(2, '0')} / {String(videos.length).padStart(2, '0')}
+              </Text>
+
+              <Box
+                as="button"
+                aria-label="Video siguiente"
+                onClick={() => goTo(active + 1)}
+                isDisabled={active === videos.length - 1}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color={active === videos.length - 1 ? 'whiteAlpha.300' : 'brand.brown'}
+                pointerEvents={active === videos.length - 1 ? 'none' : 'auto'}
+                transition="color 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1)"
+                _active={{ transform: 'translateX(3px)' }}
+              >
+                <Box as={FiChevronRight} fontSize="22px" />
+              </Box>
             </Flex>
           </Box>
         </Box>
