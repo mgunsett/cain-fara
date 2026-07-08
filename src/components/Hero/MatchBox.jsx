@@ -55,12 +55,12 @@ function MatchSlot({ data, label, labelColor }) {
               </Text>
             </HStack>
           ) : (
-            <Text fontFamily="heading" fontSize="xl" color="brand.brownLight" letterSpacing="wider">
+            <Text fontFamily="heading" fontSize="xl" color="brand.brown" letterSpacing="wider">
               VS
             </Text>
           )}
           {competition && (
-            <Text fontFamily="mono" fontSize="8px" color="brand.gray" letterSpacing="wider"
+            <Text fontFamily="mono" fontSize="8px" color="brand.brownLight" letterSpacing="wider"
                   textTransform="uppercase" mt={0.5} textAlign="center">
               {competition}
             </Text>
@@ -77,11 +77,11 @@ function MatchSlot({ data, label, labelColor }) {
       </Flex>
 
       <Flex mt={{base: 2 ,md: 4}} justify="space-between" align="flex-end">
-        <Text fontFamily="mono" fontSize="8px" color="brand.gray" letterSpacing="wider">
+        <Text fontFamily="mono" fontSize="8px" color="brand.darkLight" letterSpacing="wider">
           {date}
         </Text>
         {stadium && (
-          <Text fontFamily="mono" fontSize="8px" color="brand.gray" letterSpacing="wider"
+          <Text fontFamily="mono" fontSize="8px" color="brand.darkLight" letterSpacing="wider"
                 textAlign="right" noOfLines={1} maxW="100px">
             {stadium}
           </Text>
