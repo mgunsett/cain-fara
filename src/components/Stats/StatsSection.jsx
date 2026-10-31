@@ -7,6 +7,9 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import useScrubReveal from '../../hooks/useScrubReveal'
 import { playerData } from '../../data/playerData'
+import { RadarStats } from './RadarStats'
+import statsBack from '@assets/statsBack.webp'
+import statsBack2 from '@assets/statsBack2.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -320,6 +323,7 @@ function ClubNode({ club, isFirst, isLast, isActive }) {
         px={4}
         pt={5}
         pb={8}
+        h={'15vh'}
         bg="transparent"
         border="1px solid"
         borderColor="brand.brown2"
@@ -461,9 +465,8 @@ function ClubTimeline() {
         pb={6}
         sx={{
           scrollSnapType: 'x mandatory',
-          '&::-webkit-scrollbar': { height: '2px' },
-          '&::-webkit-scrollbar-track': { bg: 'whiteAlpha.50' },
-          '&::-webkit-scrollbar-thumb': { bg: 'brand.brown' },
+          scrollbarWidth: 'none',
+          '&::-webkit-scrollbar': { display: 'none' },
         }}
         onMouseDown={onDown}
         onMouseMove={onMove}
@@ -491,7 +494,25 @@ function ClubTimeline() {
   )
 }
 
-export default function StatsSection() {
+// Fotos de fondo: la primera a la derecha de las estadísticas, la segunda a la izquierda de Clubes
+const STATS_BACKDROPS = [
+  {
+    src: statsBack,
+    top: { base: 4, lg: 10 },
+    right: { base: '0%', md: '-8%', lg: '2%' },
+    h: { base: '70vh', lg: '95vh' },
+  },
+  {
+    src: statsBack2,
+    bottom: { base: '5%', md: 0},
+    left: { base: '30%', md: '-8%', lg: '5%' },
+    h: { base: '60vh', lg: '85vh' },
+  },
+]
+
+// variant: 'classic' (3 columnas con barras) | 'radar' (perfil + radar + temporada)
+// backdrop: muestra las fotos del jugador de fondo
+export default function StatsSection({ variant = 'classic', backdrop = false }) {
   const sectionRef = useRef(null)
   const titleRef   = useRef(null)
 
@@ -512,8 +533,29 @@ export default function StatsSection() {
       pt={{ base: 16, lg: 28 }}
       pb={{ base: 16, lg: 28 }}
       px={{ base: 5, lg: 10 }}
+      position="relative"
+      overflow="hidden"
     >
-      <Box maxW="1400px" mx="auto">
+      {backdrop && STATS_BACKDROPS.map(({ src, ...pos }) => (
+        <Image
+          key={src}
+          src={src}
+          alt=""
+          aria-hidden="true"
+          position="absolute"
+          {...pos}
+          objectFit="contain"
+          filter="grayscale(1)"
+          opacity={{ base: 0.1, lg: 0.15 }}
+          pointerEvents="none"
+          draggable={false}
+          sx={{
+            maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+          }}
+        />
+      ))}
+      <Box maxW="1400px" mx="auto" position="relative">
         {/* Header */}
         <Flex align="flex-end" justify="space-between" mb={10}>
           <Box ref={titleRef}>
@@ -528,15 +570,18 @@ export default function StatsSection() {
           </Box>
         </Flex>
 
-        {/* 3-column grid */}
-        <Grid
-          templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.1fr 1fr' }}
-          gap={5}
-        >
-          <GridItem><BioCard /></GridItem>
-          <GridItem><SeasonCards /></GridItem>
-          <GridItem><StatBars /></GridItem>
-        </Grid>
+        {variant === 'radar' ? (
+          <RadarStats />
+        ) : (
+          <Grid
+            templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.1fr 1fr' }}
+            gap={5}
+          >
+            <GridItem><BioCard /></GridItem>
+            <GridItem><SeasonCards /></GridItem>
+            <GridItem><StatBars /></GridItem>
+          </Grid>
+        )}
 
         {/* Club timeline */}
         <ClubTimeline />

@@ -27,6 +27,13 @@ import image5 from '@assets/gallery/image5.webp'
 import image6 from '@assets/gallery/image6.webp'
 import image7 from '@assets/gallery/image7.webp'
 import image8 from '@assets/gallery/image8.webp'
+import image9 from '@assets/gallery/image9.webp'
+import image10 from '@assets/gallery/image10.webp'
+import image11 from '@assets/gallery/image11.webp'
+import image12 from '@assets/gallery/image12.webp'
+import image13 from '@assets/gallery/image13.webp'
+import image14 from '@assets/gallery/image14.webp'
+import image15 from '@assets/gallery/image15.webp'
 //Video
 import photoGraph from '@assets/photoGraph.webp'
 import photoGraph2 from '@assets/photoGraph2.webp'
@@ -41,9 +48,14 @@ import ledsports from '@assets/contact3.webp'
 import moon from '@assets/contact4.webp'
 
 
+const name = 'CAIN'
+const fullName = 'FARA'
+
 export const playerData = {
-  name: 'CAIN',
-  fullName: 'FARA',
+  name: name,
+  fullName: fullName,
+  initials: `${name[0]}${fullName[0]}`,
+  displayName: `${name} ${fullName}`,
   number: 2,
   position: 'Defensor Central',
   positionShort: 'DFC',
@@ -170,6 +182,16 @@ export const playerData = {
     },
   ],
 
+  featuredVideo: {
+    vimeoId: '1236826533',
+    vimeoHash: 'de126f6994',
+    title: 'Highlights 2026',
+    subtitle: 'Universitario · Temporada 2026',
+    fullTitle: 'Cain Fara | Universitario 2026 [Highlights]',
+    duration: '12:44',
+    cover: 'https://i.vimeocdn.com/video/2219289646-65c287bc087cfe6d46df5944fe20f951bae49e2257df17d6da6761e6de0ae304-d_1280?region=us',
+  },
+
   videos: [
     {
       id: 'v1',
@@ -233,6 +255,13 @@ export const playerData = {
     { id: 6, src: image6, alt: 'Cain Fara en sesión fotográfica oficial 2024',               caption: 'Foto oficial 2024',       category: 'Retrato', aspect: 'tall' },
     { id: 7, src: image7, alt: 'Cain Fara en acción durante un partido de la Liga Profesional 2024', caption: 'Acción en Liga Profesional 2024', category: 'Partido', aspect: 'wide' },
     { id: 8, src: image8, alt: 'Cain Fara celebrando un gol en la Copa Argentina 2024', caption: 'Celebración en Copa Argentina 2024', category: 'Festejo', aspect: 'tall' },
+    { id: 9,  src: image9,  alt: 'Cain Fara con la camiseta de Universitario conduciendo la pelota por la banda', caption: 'Conducción en Universitario', category: 'Partido', aspect: 'tall' },
+    { id: 10, src: image10, alt: 'Cain Fara con Universitario dominando la pelota ante una tribuna llena', caption: 'Dominio en el Monumental', category: 'Partido', aspect: 'tall' },
+    { id: 11, src: image11, alt: 'Cain Fara llegando al estadio con la camiseta de Universitario', caption: 'Llegada al estadio', category: 'Retrato', aspect: 'tall' },
+    { id: 12, src: image12, alt: 'Cain Fara gritando un gol y agarrando el escudo de Universitario', caption: 'Grito de gol', category: 'Festejo', aspect: 'tall' },
+    { id: 13, src: image13, alt: 'Cain Fara protegiendo la pelota ante la marca de un rival', caption: 'Duelo por la pelota', category: 'Partido', aspect: 'tall' },
+    { id: 14, src: image14, alt: 'Cain Fara sonriendo con sus botines en la mano durante un entrenamiento', caption: 'Entrenamiento con Universitario', category: 'Entrenamiento', aspect: 'tall' },
+    { id: 15, src: image15, alt: 'Cain Fara besando el trofeo de campeón de Primera Nacional 2021 con Tigre', caption: 'Campeón Primera Nacional 2021', category: 'Festejo', aspect: 'tall' },
   ],
 
   socialMedia: [

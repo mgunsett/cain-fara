@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MatchBox from './MatchBox'
+import { HeroBackdrop } from './HeroBackdrop'
 import { playerData } from '../../data/playerData'
 import useMatches from '../../hooks/useMatches'
 import '../../styles/globals.css'
@@ -59,7 +60,8 @@ function PlayerPanel() {
   )
 }
 
-export default function Hero() {
+// variant: 'classic' | 'backdrop' (suma 2 fotos del jugador de fondo, en escala de grises)
+export default function Hero({ variant = 'classic' }) {
   const outerRef     = useRef(null)
   const containerRef = useRef(null)
   const bgGlowRef    = useRef(null)
@@ -139,6 +141,9 @@ export default function Hero() {
           pointerEvents="none"
           background="radial-gradient(ellipse 70% 60% at 65% 50%, rgba(236, 111, 53, 0.14) 0%, transparent 70%)"
         />
+
+        {/* Fotos de fondo — solo en la variante 'backdrop' */}
+        {variant === 'backdrop' && <HeroBackdrop ref={midLayerRef} />}
 
         {/* Player photo */}
         <Box

@@ -16,7 +16,7 @@ function Landing() {
       <Navbar />
       <Hero />
       <Box mt="-100vh" position="relative" zIndex={21}>
-        <StatsSection />
+        <StatsSection variant='radar' backdrop />
         <VideosSection />
         <GallerySection />
         <PressSection />

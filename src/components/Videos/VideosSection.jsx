@@ -8,6 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { playerData } from '../../data/playerData'
 import useScrubReveal from '../../hooks/useScrubReveal'
 import { VideoCard } from './VideoCard'
+import { FeaturedVideo } from './FeaturedVideo'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -160,6 +161,9 @@ export default function VideosSection() {
             Videos
           </Text>
         </Flex>
+
+        {/* ── Video principal ── */}
+        {playerData.featuredVideo && <FeaturedVideo video={playerData.featuredVideo} />}
 
         {/* ── Cards ── */}
         <Box ref={wrapRef} position="relative">
