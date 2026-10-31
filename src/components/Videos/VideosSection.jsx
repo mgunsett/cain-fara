@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import { Box, Flex, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Flex, Text, useBreakpointValue, usePrefersReducedMotion } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiPlay, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { gsap } from 'gsap'
@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import { playerData } from '../../data/playerData'
 import { FeaturedVideo } from './FeaturedVideo'
+import { ClipPreview } from './ClipPreview'
 import { VideoModal } from './VideoModal'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -15,10 +16,11 @@ const EASE = 'cubic-bezier(0.22,1,0.36,1)'
 const MotionBox = motion(Box)
 
 // El panel activo siempre respeta 9:16 (formato TikTok) para no perder nitidez.
-// Desktop: alto fijo → ancho activo = 560 * 9/16 = 315px. Mobile: el activo ocupa el resto del ancho.
-const PANEL_H = { base: 'calc((100vw - 40px - 128px) * 16 / 9)', md: '560px' }
-const ACTIVE_W = 315
-const COLLAPSED_W = { base: 56, md: 110 }
+// Desktop: alto fijo → ancho activo = alto * 9/16 (md 560 → 315px, lg 680 → 383px). Mobile: el activo ocupa el resto del ancho.
+// xl: el bloque de clips ocupa el 60% de la fila y los colapsados reparten el ancho sobrante.
+const PANEL_H = { base: 'calc((100vw - 40px - 128px) * 16 / 9)', md: '560px', lg: '680px' }
+const ACTIVE_W = { md: 315, lg: 383 }
+const COLLAPSED_W = { base: 56, md: 110, lg: 150 }
 
 // Sección Videos: portada panorámica 21:9 + acordeón de clips que se expanden
 export default function VideosSection() {
@@ -30,7 +32,11 @@ export default function VideosSection() {
   const panelsRef = useRef(null)
   const [active, setActive] = useState(0)
   const [openVideo, setOpenVideo] = useState(null)
+  const [hovering, setHovering] = useState(false)
   const isDesktop = useBreakpointValue({ base: false, md: true })
+  const reducedMotion = usePrefersReducedMotion()
+  // El preview solo corre mientras el usuario interactúa con el acordeón (no al cargar la página)
+  const showPreview = hovering && isDesktop && !reducedMotion
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -63,17 +69,17 @@ export default function VideosSection() {
       ref={sectionRef}
       position="relative"
       bg="brand.gray"
-      px={{ base: 5, md: 12, lg: 20 }}
+      px={{ base: 5, md: 12, lg: 10 }}
       py={{ base: 20, md: 28 }}
       overflow="hidden"
     >
-      <Box maxW="1320px" mx="auto" position="relative" zIndex={1}>
-        {/* ── Header centrado ── */}
-        <Flex ref={headerRef} direction="column" align="center" textAlign="center" mb={{ base: 8, md: 12 }}>
+      <Box maxW="1400px" mx="auto" position="relative" zIndex={1}>
+        {/* ── Header (mismo estilo y alineación que Estadísticas / Clubes) ── */}
+        <Flex ref={headerRef} direction="column" align="flex-start" mb={10}>
           <Text fontFamily="mono" fontSize="10px" color="white" textTransform="uppercase" letterSpacing="widest">
             Highlights
           </Text>
-          <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '7xl' }} color="brand.brown" lineHeight={0.9}>
+          <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }} color="brand.brown" lineHeight={1}>
             Videos
           </Text>
         </Flex>
@@ -82,7 +88,7 @@ export default function VideosSection() {
         {featured && <FeaturedVideo video={featured} ratio={isDesktop ? 21 / 9 : 16 / 9} mb={{ base: 8, md: 16 }} />}
 
         {/* ── Clips: info del activo + acordeón vertical ── */}
-        <Flex align="stretch" gap={{ base: 0, md: 10, lg: 16 }}>
+        <Flex align="stretch" gap={{ base: 0, md: 10, lg: 16, xl: 0 }}>
           <ActiveInfo
             videos={videos}
             active={active}
@@ -95,7 +101,11 @@ export default function VideosSection() {
             gap={{ base: 2, md: 4 }}
             h={PANEL_H}
             flexShrink={0}
-            w={{ base: '100%', md: 'auto' }}
+            w={{ base: '100%', md: 'auto', xl: '60%' }}
+            onMouseEnter={() => setHovering(true)}
+            onMouseLeave={() => setHovering(false)}
+            onFocus={() => setHovering(true)}
+            onBlur={() => setHovering(false)}
           >
             {videos.map((v, i) => (
               <AccordionPanel
@@ -103,6 +113,7 @@ export default function VideosSection() {
                 video={v}
                 index={i}
                 isActive={active === i}
+                showPreview={showPreview && active === i}
                 onActivate={() => setActive(i)}
                 onOpen={() => setOpenVideo(v)}
               />
@@ -116,7 +127,7 @@ export default function VideosSection() {
   )
 }
 
-function AccordionPanel({ video, index, isActive, onActivate, onOpen }) {
+function AccordionPanel({ video, index, isActive, showPreview, onActivate, onOpen }) {
   return (
     <Box
       className="acc-panel"
@@ -127,7 +138,9 @@ function AccordionPanel({ video, index, isActive, onActivate, onOpen }) {
       cursor="pointer"
       flex={{
         base: isActive ? '1 1 0' : `0 0 ${COLLAPSED_W.base}px`,
-        md: `0 0 ${isActive ? ACTIVE_W : COLLAPSED_W.md}px`,
+        md: `0 0 ${isActive ? ACTIVE_W.md : COLLAPSED_W.md}px`,
+        lg: `0 0 ${isActive ? ACTIVE_W.lg : COLLAPSED_W.lg}px`,
+        xl: isActive ? `0 0 ${ACTIVE_W.lg}px` : '1 1 0',
       }}
       minW={0}
       transition={`flex 0.8s ${EASE}`}
@@ -154,6 +167,7 @@ function AccordionPanel({ video, index, isActive, onActivate, onOpen }) {
         transform={isActive ? 'scale(1)' : 'scale(1.12)'}
         transition={`filter 0.7s ease, transform 1s ${EASE}`}
       />
+      {showPreview && <ClipPreview video={video} />}
       <Box
         position="absolute"
         inset={0}
@@ -177,7 +191,7 @@ function AccordionPanel({ video, index, isActive, onActivate, onOpen }) {
         pointerEvents="none"
       >
         <Text fontFamily="mono" fontSize="12px" letterSpacing="0.2em" color="brand.brownLight">
-          {`0${index + 1}`}
+          
         </Text>
         <Text
           fontFamily="heading"
@@ -203,15 +217,8 @@ function AccordionPanel({ video, index, isActive, onActivate, onOpen }) {
         pointerEvents="none"
       >
         <Flex justify="space-between" align="center">
-          <Flex align="center" gap="6px" bg="rgba(10,5,5,0.55)" backdropFilter="blur(6px)" border="1px solid" borderColor="rgba(80,25,25,0.55)" px="8px" py="4px" borderRadius="5px">
-            <Box w="6px" h="6px" borderRadius="full" bg="#E5484D" />
-            <Text fontFamily="mono" fontSize="9px" letterSpacing="0.24em" textTransform="uppercase" color="white">
-              {video.category}
-            </Text>
-          </Flex>
-          <Text fontFamily="mono" fontSize="12px" letterSpacing="0.2em" color="whiteAlpha.800">
-            {`0${index + 1}`}
-          </Text>
+          
+         
         </Flex>
 
         <Flex align="flex-end" justify="space-between" gap={4}>
@@ -270,7 +277,7 @@ function ActiveInfo({ videos, active, setActive, onOpen }) {
   }
 
   return (
-    <Flex display={{ base: 'none', md: 'flex' }} direction="column" justify="space-between" flex={1} minW={0} py={2}>
+    <Flex display={{ base: 'none', md: 'flex' }} direction="column" justify="space-between" flex={1} minW={0} py={2} pr={{ xl: 16 }}>
       <Box>
         <Flex align="center" gap={3} mb={8}>
           <Text fontFamily="mono" fontSize="10px" letterSpacing="0.26em" textTransform="uppercase" color="brand.dark">

@@ -11,6 +11,8 @@ const theme = extendTheme({
       brownLight2:'#973333',
       amber:      '#D4A84B', // dorado para pequeños detalles
       dark:       '#0A0505', // oscuro con tono cálido (fondo)
+      ink:        '#170C0D', // fondo de la galería
+      panel:      '#2B0B0E', // fondo de los paneles mientras carga la foto
       darkLight:  '#615d5dbb',
       grayDark2:  '#83634d88',
       grayDark:   '#a18775',

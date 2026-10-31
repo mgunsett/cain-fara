@@ -61,7 +61,7 @@ export const playerData = {
   positionShort: 'DFC',
   nationality: 'Argentino',
   nationalityFlag: argentina,
-  age: 31,
+  age: 32,
   height: '1.84m',
   weight: '82 kg',
   foot: 'Derecho',
@@ -82,12 +82,12 @@ export const playerData = {
   ],
 
   seasonStats: [
-    { label: 'Partidos',    value: 22 },
+    { label: 'Partidos',    value: 35 },
     { label: 'Goles',       value: 3 },
-    { label: 'Juego aéreo', value: 34 },
-    { label: 'Quites', value: 58 },
-    { label: 'Min / Part.', value: "1,935'" },
-    { label: 'Valoración', value: 7.32  },
+    { label: 'Juego aéreo', value: 51 },
+    { label: 'Quites', value: 33 },
+    { label: 'Min / Part.', value: "2,483'" },
+    { label: 'Valoración', value: 7.09  },
 
   ],
 

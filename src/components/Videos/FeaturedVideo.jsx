@@ -81,6 +81,8 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
                 w="100%"
                 h="100%"
                 objectFit="cover"
+                objectPosition="center 20%"
+                transformOrigin="center 20%"
                 transition="transform 0.9s cubic-bezier(0.22,1,0.36,1)"
                 transform={hovered ? 'scale(1.04)' : 'scale(1)'}
               />
@@ -107,7 +109,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
               >
                 <Box w="6px" h="6px" borderRadius="full" bg="brand.brownLight" />
                 <Text fontFamily="mono" fontSize="9px" letterSpacing="0.24em" textTransform="uppercase" color="white">
-                  Video principal
+                  Cain Fara
                 </Text>
               </Flex>
 

@@ -4,7 +4,7 @@ import Navbar from './components/UI/Navbar'
 import Hero from './components/Hero/Hero'
 import StatsSection from './components/Stats/StatsSection'
 import VideosSection from './components/Videos/VideosSection'
-import GallerySection from './components/Gallery/GallerySection'
+import GalleryAccordionSection from './components/Gallery/GalleryAccordionSection'
 import PressSection from './components/Press/PressSection'
 import ContactSection from './components/Contact/ContactSection'
 import Footer from './components/UI/Footer'
@@ -18,7 +18,7 @@ function Landing() {
       <Box mt="-100vh" position="relative" zIndex={21}>
         <StatsSection variant='radar' backdrop />
         <VideosSection />
-        <GallerySection />
+        <GalleryAccordionSection />
         <PressSection />
         <ContactSection />
         <Footer />
