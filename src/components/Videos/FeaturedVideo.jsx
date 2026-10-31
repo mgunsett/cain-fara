@@ -19,7 +19,7 @@ const reveal = {
 }
 
 // Video principal: portada propia y el reproductor de Vimeo se carga recién al hacer clic
-export function FeaturedVideo({ video }) {
+export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 } }) {
   const [playing, setPlaying] = useState(false)
   const [hovered, setHovered] = useState(false)
   const reduced = useReducedMotion()
@@ -32,9 +32,10 @@ export function FeaturedVideo({ video }) {
       initial={reduced ? 'visible' : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      mb={{ base: 10, md: 14 }}
+      mb={mb}
     >
-      <AspectRatio ratio={16 / 9}>
+      {/* la portada puede usar otro formato; al reproducir vuelve a 16:9 */}
+      <AspectRatio ratio={playing ? 16 / 9 : ratio}>
         <Box
           position="relative"
           overflow="hidden"
