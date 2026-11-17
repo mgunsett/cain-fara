@@ -191,7 +191,7 @@ export function RadarStats() {
           borderLeftColor="brand.brown2"
           pl={{ base: 0, lg: 10 }}
         >
-          <ColumnShell title="Temporada 2025 / 2026" side="right">
+          <ColumnShell title="Temporada 2026" side="right">
             <SeasonColumn items={playerData.seasonStats} />
           </ColumnShell>
         </Box>

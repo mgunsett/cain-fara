@@ -44,13 +44,13 @@ function PlayerPanel() {
           </Text>
         </Flex>
         <Flex justifyContent='flex-start' alignItems='center' gap={{base:'8px',md:'12px'}}>
-          <Image src={playerData.nationalityFlag} w={{ base: '15px', md: '20px' }} />
+          <Image src={playerData.nationalityFlag} alt={`Bandera de ${playerData.nationality}`} w={{ base: '15px', md: '20px' }} />
           <Text mb={'-5px'} fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.boneWarm" letterSpacing="wider">
             {playerData.nationality}
           </Text>
         </Flex>
         <Flex justifyContent='flex-start' alignItems={'flex-end'} gap={{base:'8px',md:'10px'}} spacing={1} mt={'3px'} ml={-1}>
-          <Image src={playerData.logoCurrentClub} ml={{base:'2px',md:'none'}} w={{ base: '20px', md: '28px' }} h={{base:'20px',md:'28px'}} />
+          <Image src={playerData.logoCurrentClub} alt={`Escudo de ${playerData.currentClub}`} ml={{base:'2px',md:'none'}} w={{ base: '20px', md: '28px' }} h={{base:'20px',md:'28px'}} />
           <Text fontFamily="mono" fontSize={{base:'xs',md:"md"}} color="brand.boneWarm" letterSpacing="wider">
             {currentClub}
           </Text>

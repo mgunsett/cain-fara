@@ -82,12 +82,12 @@ export const playerData = {
   ],
 
   seasonStats: [
-    { label: 'Partidos',    value: 35 },
-    { label: 'Goles',       value: 3 },
+    { label: 'Partidos',    value: 38 },
+    { label: 'Goles',       value: 4 },
     { label: 'Juego aéreo', value: 51 },
-    { label: 'Quites', value: 33 },
-    { label: 'Min / Part.', value: "2,483'" },
-    { label: 'Valoración', value: 7.09  },
+    { label: 'Recuperos', value: 111 },
+    { label: 'Min / Part.', value: "3,293'" },
+    { label: 'Valoración', value: 7.59  },
 
   ],
 
