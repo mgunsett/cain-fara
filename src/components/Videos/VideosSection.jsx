@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import { Box, Flex, Text, useBreakpointValue, usePrefersReducedMotion } from '@chakra-ui/react'
+import { Box, Flex, SimpleGrid, Text, useBreakpointValue, usePrefersReducedMotion } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiPlay, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { gsap } from 'gsap'
@@ -25,7 +25,7 @@ const COLLAPSED_W = { base: 56, md: 110, lg: 150 }
 // Sección Videos: portada panorámica 21:9 + acordeón de clips que se expanden
 export default function VideosSection() {
   const videos = playerData.videos
-  const featured = playerData.featuredVideo
+  const featured = playerData.featuredVideos ?? []
 
   const sectionRef = useRef(null)
   const headerRef = useRef(null)
@@ -84,8 +84,25 @@ export default function VideosSection() {
           </Text>
         </Flex>
 
-        {/* ── Video principal en formato panorámico ── */}
-        {featured && <FeaturedVideo video={featured} ratio={isDesktop ? 21 / 9 : 16 / 9} mb={{ base: 8, md: 16 }} />}
+        {/* ── Highlights principales: dúo 16:9 (se apilan en mobile); si hay uno solo, panorámico 21:9 ── */}
+        {featured.length === 1 && (
+          <FeaturedVideo video={featured[0]} ratio={isDesktop ? 21 / 9 : 16 / 9} mb={{ base: 8, md: 16 }} />
+        )}
+        {featured.length > 1 && (
+          <Box mb={{ base: 8, md: 16 }}>
+            <Flex align="center" gap={3} mb={4}>
+              <Text fontFamily="mono" fontSize="10px" letterSpacing="0.26em" textTransform="uppercase" color="brand.dark">
+                Temporada 2026
+              </Text>
+              <Box flex={1} h="1px" bg="rgba(80,25,25,0.35)" />
+            </Flex>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
+              {featured.map((v, i) => (
+                <FeaturedVideo key={v.vimeoId} video={v} ratio={16 / 9} mb={0} compact delay={i * 0.12} />
+              ))}
+            </SimpleGrid>
+          </Box>
+        )}
 
         {/* ── Clips: info del activo + acordeón vertical ── */}
         <Flex align="stretch" gap={{ base: 0, md: 10, lg: 16, xl: 0 }}>

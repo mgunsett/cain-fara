@@ -15,16 +15,18 @@ const pulse = keyframes`
 
 const reveal = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } },
+  visible: (delay = 0) => ({ opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay } }),
 }
 
 // Video principal: portada propia y el reproductor de Vimeo se carga recién al hacer clic
-export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 } }) {
+// compact: versión para mostrar dos videos lado a lado (títulos y play más chicos)
+export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }, compact = false, delay = 0 }) {
   const [playing, setPlaying] = useState(false)
   const [hovered, setHovered] = useState(false)
   const reduced = useReducedMotion()
 
-  const src = `https://player.vimeo.com/video/${video.vimeoId}?h=${video.vimeoHash}&autoplay=1&title=0&byline=0&portrait=0`
+  const hash = video.vimeoHash ? `h=${video.vimeoHash}&` : ''
+  const src = `https://player.vimeo.com/video/${video.vimeoId}?${hash}autoplay=1&title=0&byline=0&portrait=0`
 
   return (
     <MotionBox
@@ -32,6 +34,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
       initial={reduced ? 'visible' : 'hidden'}
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
+      custom={delay}
       mb={mb}
     >
       {/* la portada puede usar otro formato; al reproducir vuelve a 16:9 */}
@@ -117,7 +120,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
               <Flex position="absolute" inset={0} align="center" justify="center">
                 <Box
                   position="relative"
-                  boxSize={{ base: '60px', md: '84px' }}
+                  boxSize={compact ? { base: '60px', md: '72px' } : { base: '60px', md: '84px' }}
                   transition="transform 0.45s cubic-bezier(0.22,1,0.36,1)"
                   transform={hovered ? 'scale(1.1)' : 'scale(1)'}
                 >
@@ -136,7 +139,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
                     backdropFilter="blur(10px)"
                     transition="all 0.4s ease"
                   >
-                    <Box as={FiPlay} fontSize={{ base: '22px', md: '30px' }} ml="4px" color="white" />
+                    <Box as={FiPlay} fontSize={compact ? { base: '22px', md: '26px' } : { base: '22px', md: '30px' }} ml="4px" color="white" />
                   </Flex>
                 </Box>
               </Flex>
@@ -155,13 +158,15 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
                   <Text fontFamily="mono" fontSize={{ base: '9px', md: '11px' }} letterSpacing="0.26em" textTransform="uppercase" color="brand.brownLight" mb={1}>
                     {video.subtitle}
                   </Text>
-                  <Text fontFamily="heading" fontSize={{ base: '3xl', md: '5xl', lg: '6xl' }} lineHeight={0.95} color="white">
+                  <Text fontFamily="heading" fontSize={compact ? { base: '3xl', md: '4xl', lg: '5xl' } : { base: '3xl', md: '5xl', lg: '6xl' }} lineHeight={0.95} color="white">
                     {video.title}
                   </Text>
                 </Box>
-                <Text fontFamily="mono" fontSize={{ base: '10px', md: '12px' }} letterSpacing="0.2em" color="whiteAlpha.800" flexShrink={0}>
-                  {video.duration}
-                </Text>
+                {video.duration && (
+                  <Text fontFamily="mono" fontSize={{ base: '10px', md: '12px' }} letterSpacing="0.2em" color="whiteAlpha.800" flexShrink={0}>
+                    {video.duration}
+                  </Text>
+                )}
               </Flex>
             </Box>
           )}
