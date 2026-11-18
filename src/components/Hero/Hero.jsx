@@ -170,7 +170,7 @@ export default function Hero({ variant = 'classic' }) {
             <Image
               className='player-image' 
               src={playerData.image}
-              alt={`Cain Fara, defensor profesional de ${playerData.currentClub}`}
+              alt={`${playerData.shortName}, ${playerData.position.toLowerCase()} de ${playerData.currentClub}`}
               h="100%"
               maxW={{ base: '100vw', lg: '50vw' }}
               objectFit="contain"
