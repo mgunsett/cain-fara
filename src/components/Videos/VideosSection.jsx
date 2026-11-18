@@ -92,7 +92,7 @@ export default function VideosSection() {
           <Box mb={{ base: 8, md: 16 }}>
             <Flex align="center" gap={3} mb={4}>
               <Text fontFamily="mono" fontSize="10px" letterSpacing="0.26em" textTransform="uppercase" color="brand.dark">
-                Temporada 2026
+                HIGHLIGHTS
               </Text>
               <Box flex={1} h="1px" bg="rgba(80,25,25,0.35)" />
             </Flex>

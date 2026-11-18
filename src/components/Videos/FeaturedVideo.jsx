@@ -95,7 +95,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
                 bg="linear-gradient(180deg, rgba(10,5,5,0.1) 0%, rgba(10,5,5,0.2) 45%, rgba(10,5,5,0.88) 100%)"
               />
 
-              {/* badge */}
+              {/* badge
               <Flex
                 position="absolute"
                 top={{ base: 3, md: 5 }}
@@ -114,7 +114,7 @@ export function FeaturedVideo({ video, ratio = 16 / 9, mb = { base: 10, md: 14 }
                 <Text fontFamily="mono" fontSize="9px" letterSpacing="0.24em" textTransform="uppercase" color="white">
                   Cain Fara
                 </Text>
-              </Flex>
+              </Flex> */}
 
               {/* play */}
               <Flex position="absolute" inset={0} align="center" justify="center">

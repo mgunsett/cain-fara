@@ -188,21 +188,21 @@ export const playerData = {
   // Highlights principales (se muestran de a dos, en 16:9). vimeoHash solo si el video es privado/oculto.
   featuredVideos: [
     {
+      vimeoId: '1247836743',
+      title: 'Cain 2026',
+      subtitle: 'Universitario',
+      fullTitle: 'Cain Fara | Universitario 2026 [Edición del club]',
+      duration: '06.04',
+      cover: image13,
+    },
+    {
       vimeoId: '1236826533',
       vimeoHash: 'de126f6994',
       title: 'Highlights 2026',
-      subtitle: 'Universitario · Temporada 2026',
+      subtitle: 'Universitario',
       fullTitle: 'Cain Fara | Universitario 2026 [Highlights]',
       duration: '12:44',
       cover: 'https://i.vimeocdn.com/video/2219289646-65c287bc087cfe6d46df5944fe20f951bae49e2257df17d6da6761e6de0ae304-d_1280?region=us',
-    },
-    {
-      vimeoId: '1247836743',
-      title: 'Cain 2026',
-      subtitle: 'Universitario · Edición del club',
-      fullTitle: 'Cain Fara | Universitario 2026 [Edición del club]',
-      duration: '',
-      cover: image5,
     },
   ],
 
@@ -217,15 +217,6 @@ export const playerData = {
       cover: photoGraph,
     },
     {
-      id: 'v2',
-      title: "Atlanta '25",
-      fullTitle: 'Cain Fara | Atlanta 2025 [Highlights]',
-      tiktokId: '7504079891466390790',
-      season: 'Atlanta',
-      category: 'Resumen',
-      cover: photoGraph2,
-    },
-    {
       id: 'v3',
       title: 'Libertadores 2026',
       fullTitle: 'Cain Fara | Libertadores 2026 [Highlights]',
@@ -233,6 +224,15 @@ export const playerData = {
       season: 'Gol vs Nacional',
       category: 'Highlights',
       cover: photoGraph3,
+    },
+    {
+      id: 'v2',
+      title: "Atlanta '25",
+      fullTitle: 'Cain Fara | Atlanta 2025 [Highlights]',
+      tiktokId: '7504079891466390790',
+      season: 'Atlanta',
+      category: 'Resumen',
+      cover: photoGraph2,
     },
   ],
 
