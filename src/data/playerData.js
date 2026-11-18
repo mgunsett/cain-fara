@@ -82,7 +82,7 @@ export const playerData = {
   ],
 
   // Dato destacado de la temporada (sección Estadísticas)
-  fairPlay: { redCards: 0, matches: 32, season: '2026' },
+  fairPlay: { redCards: 0, matches: 38, season: '2026' },
 
   seasonStats: [
     { label: 'Partidos',    value: 38 },
