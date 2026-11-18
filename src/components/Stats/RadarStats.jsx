@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { playerData } from '../../data/playerData'
 import { RadarChart, OverallRating } from './RadarChart'
+import { FairPlayTile, FairPlayStrip, RatingWithSeal } from './FairPlay'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -91,7 +92,7 @@ function ProfileColumn({ items }) {
 }
 
 // Temporada actual (grilla de tiles)
-function SeasonColumn({ items }) {
+function SeasonColumn({ items, highlight }) {
   return (
     <Grid
       templateColumns={{ base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', lg: 'repeat(2, 1fr)' }}
@@ -132,11 +133,13 @@ function SeasonColumn({ items }) {
           </Text>
         </Box>
       ))}
+      {highlight === 'tile' && <FairPlayTile />}
     </Grid>
   )
 }
 
-export function RadarStats() {
+// highlight: dato destacado de fair play → 'tile' | 'strip' | 'seal' | null
+export function RadarStats({ highlight = null }) {
   const overall = Math.round(
     playerData.stats.reduce((sum, s) => sum + s.value, 0) / playerData.stats.length
   )
@@ -182,7 +185,9 @@ export function RadarStats() {
           justifyContent="center"
         >
           <RadarChart stats={playerData.stats} />
-          <OverallRating value={overall} />
+          {highlight === 'seal'
+            ? <RatingWithSeal rating={<OverallRating value={overall} mt={0} />} />
+            : <OverallRating value={overall} />}
         </Box>
 
         <Box
@@ -192,10 +197,11 @@ export function RadarStats() {
           pl={{ base: 0, lg: 10 }}
         >
           <ColumnShell title="Temporada 2026" side="right">
-            <SeasonColumn items={playerData.seasonStats} />
+            <SeasonColumn items={playerData.seasonStats} highlight={highlight} />
           </ColumnShell>
         </Box>
       </Grid>
+      {highlight === 'strip' && <FairPlayStrip />}
     </Box>
   )
 }

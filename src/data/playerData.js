@@ -81,6 +81,9 @@ export const playerData = {
     { label: 'Visión de Juego',value: 79 },
   ],
 
+  // Dato destacado de la temporada (sección Estadísticas)
+  fairPlay: { redCards: 0, matches: 32, season: '2026' },
+
   seasonStats: [
     { label: 'Partidos',    value: 38 },
     { label: 'Goles',       value: 4 },

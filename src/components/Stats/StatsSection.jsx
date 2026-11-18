@@ -512,7 +512,7 @@ const STATS_BACKDROPS = [
 
 // variant: 'classic' (3 columnas con barras) | 'radar' (perfil + radar + temporada)
 // backdrop: muestra las fotos del jugador de fondo
-export default function StatsSection({ variant = 'classic', backdrop = false }) {
+export default function StatsSection({ variant = 'classic', backdrop = false, highlight = null }) {
   const sectionRef = useRef(null)
   const titleRef   = useRef(null)
 
@@ -571,7 +571,7 @@ export default function StatsSection({ variant = 'classic', backdrop = false }) 
         </Flex>
 
         {variant === 'radar' ? (
-          <RadarStats />
+          <RadarStats highlight={highlight} />
         ) : (
           <Grid
             templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1.1fr 1fr' }}

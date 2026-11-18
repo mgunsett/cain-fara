@@ -112,7 +112,7 @@ export function RadarChart({ stats }) {
   )
 }
 
-export function OverallRating({ value }) {
+export function OverallRating({ value, ...rest }) {
   const numRef = useRef(null)
 
   useEffect(() => {
@@ -137,7 +137,7 @@ export function OverallRating({ value }) {
   }, [value])
 
   return (
-    <Box textAlign="center" mt={6}>
+    <Box textAlign="center" mt={6} {...rest}>
       <Text ref={numRef}
         fontFamily="heading"
         fontSize={{ base: '80px', md: '70px' }}
