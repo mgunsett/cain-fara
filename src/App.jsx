@@ -11,13 +11,13 @@ import Footer from './components/UI/Footer'
 import AdminPage from './pages/AdminPage'
 import { Helmet } from 'react-helmet-async'
 
-const SITE_URL = 'https://cainfara.vercel.app/'
+const SITE_URL = 'https://cainfara.com/'
 
 function Landing() {
   return (
     <Box as="main" bg="brand.dark" overflowX="hidden">
       <Helmet>
-        <title>Cain Fara | Defensor Central de Universitario — Estadísticas y Highlights</title>
+        <title>Cain Fara | Defensor Central de Universitario de Deportes</title>
         <link rel="canonical" href={SITE_URL} />
       </Helmet>
       <Navbar />
