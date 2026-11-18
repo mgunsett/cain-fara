@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { playerData } from '../../data/playerData'
 import { RadarChart, OverallRating } from './RadarChart'
-import { FairPlayTile, FairPlayStrip, RatingWithSeal } from './FairPlay'
+import { FairPlayTile } from './FairPlay'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -92,7 +92,7 @@ function ProfileColumn({ items }) {
 }
 
 // Temporada actual (grilla de tiles)
-function SeasonColumn({ items, highlight }) {
+function SeasonColumn({ items, fairPlay }) {
   return (
     <Grid
       templateColumns={{ base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', lg: 'repeat(2, 1fr)' }}
@@ -133,13 +133,13 @@ function SeasonColumn({ items, highlight }) {
           </Text>
         </Box>
       ))}
-      {highlight === 'tile' && <FairPlayTile />}
+      {fairPlay && <FairPlayTile />}
     </Grid>
   )
 }
 
-// highlight: dato destacado de fair play → 'tile' | 'strip' | 'seal' | null
-export function RadarStats({ highlight = null }) {
+// fairPlay: muestra el tile destacado de tarjetas rojas en la columna de temporada
+export function RadarStats({ fairPlay = false }) {
   const overall = Math.round(
     playerData.stats.reduce((sum, s) => sum + s.value, 0) / playerData.stats.length
   )
@@ -185,9 +185,7 @@ export function RadarStats({ highlight = null }) {
           justifyContent="center"
         >
           <RadarChart stats={playerData.stats} />
-          {highlight === 'seal'
-            ? <RatingWithSeal rating={<OverallRating value={overall} mt={0} />} />
-            : <OverallRating value={overall} />}
+          <OverallRating value={overall} />
         </Box>
 
         <Box
@@ -197,11 +195,10 @@ export function RadarStats({ highlight = null }) {
           pl={{ base: 0, lg: 10 }}
         >
           <ColumnShell title="Temporada 2026" side="right">
-            <SeasonColumn items={playerData.seasonStats} highlight={highlight} />
+            <SeasonColumn items={playerData.seasonStats} fairPlay={fairPlay} />
           </ColumnShell>
         </Box>
       </Grid>
-      {highlight === 'strip' && <FairPlayStrip />}
     </Box>
   )
 }

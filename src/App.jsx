@@ -23,7 +23,7 @@ function Landing() {
       <Navbar />
       <Hero />
       <Box mt="-100vh" position="relative" zIndex={21}>
-        <StatsSection variant='radar' backdrop />
+        <StatsSection variant='radar' backdrop fairPlay />
         <VideosSection />
         <GalleryAccordionSection />
         <PressSection />
