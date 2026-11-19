@@ -7,6 +7,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import useScrubReveal from '../../hooks/useScrubReveal'
 import { playerData } from '../../data/playerData'
+import useSeasonStats from '../../hooks/useSeasonStats'
+import { seasonTitle } from '../../lib/seasonTiles'
 import { RadarStats } from './RadarStats'
 import statsBack from '@assets/statsBack.webp'
 import statsBack2 from '@assets/statsBack2.webp'
@@ -513,6 +515,8 @@ const STATS_BACKDROPS = [
 // variant: 'classic' (3 columnas con barras) | 'radar' (perfil + radar + temporada)
 // backdrop: muestra las fotos del jugador de fondo
 export default function StatsSection({ variant = 'classic', backdrop = false, fairPlay = false }) {
+  // Con totales de la API el título muestra sólo la temporada en curso.
+  const season = useSeasonStats()
   const sectionRef = useRef(null)
   const titleRef   = useRef(null)
 
@@ -561,7 +565,7 @@ export default function StatsSection({ variant = 'classic', backdrop = false, fa
           <Box ref={titleRef}>
             <Text fontFamily="mono" fontSize="10px" color="white"
                   textTransform="uppercase" letterSpacing="widest" >
-              Temporada 2025 / 2026
+              {seasonTitle(season, 'Temporada 2025 / 2026')}
             </Text>
             <Text as="h2" fontFamily="heading" fontSize={{ base: '5xl', lg: '6xl' }}
                   color="brand.brown" lineHeight={1}>

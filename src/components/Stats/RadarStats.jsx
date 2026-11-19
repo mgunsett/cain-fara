@@ -3,6 +3,8 @@ import { Box, Grid, Text, VStack, Flex } from '@chakra-ui/react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { playerData } from '../../data/playerData'
+import useSeasonStats from '../../hooks/useSeasonStats'
+import { seasonTiles, seasonTitle } from '../../lib/seasonTiles'
 import { RadarChart, OverallRating } from './RadarChart'
 import { FairPlayTile } from './FairPlay'
 
@@ -92,7 +94,7 @@ function ProfileColumn({ items }) {
 }
 
 // Temporada actual (grilla de tiles)
-function SeasonColumn({ items, fairPlay }) {
+function SeasonColumn({ items, fairPlay, fairPlayData }) {
   return (
     <Grid
       templateColumns={{ base: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', lg: 'repeat(2, 1fr)' }}
@@ -133,13 +135,22 @@ function SeasonColumn({ items, fairPlay }) {
           </Text>
         </Box>
       ))}
-      {fairPlay && <FairPlayTile />}
+      {/* El tile destaca cero rojas: si la API trae alguna, no se muestra */}
+      {fairPlay && !(fairPlayData?.redCards > 0) && <FairPlayTile data={fairPlayData} />}
     </Grid>
   )
 }
 
 // fairPlay: muestra el tile destacado de tarjetas rojas en la columna de temporada
 export function RadarStats({ fairPlay = false }) {
+  // Temporada en curso desde API-Football; sin datos, los valores fijos.
+  const season = useSeasonStats()
+  const seasonItems = season ? seasonTiles(season) : playerData.seasonStats
+  // Fair play: rojas y partidos de la temporada en curso, si la API los trae.
+  const fairPlayData = season && typeof season.rojas === 'number' && season.partidos
+    ? { redCards: season.rojas, matches: season.partidos, season: String(season.temporada) }
+    : undefined
+
   const overall = Math.round(
     playerData.stats.reduce((sum, s) => sum + s.value, 0) / playerData.stats.length
   )
@@ -194,8 +205,9 @@ export function RadarStats({ fairPlay = false }) {
           borderLeftColor="brand.brown2"
           pl={{ base: 0, lg: 10 }}
         >
-          <ColumnShell title="Temporada 2026" side="right">
-            <SeasonColumn items={playerData.seasonStats} fairPlay={fairPlay} />
+          {/* key: al llegar los datos se vuelve a montar y se anima de nuevo */}
+          <ColumnShell key={season ? 'api' : 'static'} title={seasonTitle(season, 'Temporada 2026')} side="right">
+            <SeasonColumn items={seasonItems} fairPlay={fairPlay} fairPlayData={fairPlayData} />
           </ColumnShell>
         </Box>
       </Grid>
