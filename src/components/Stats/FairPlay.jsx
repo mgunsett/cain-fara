@@ -25,8 +25,9 @@ function RedCard({ w = 12, h = 17, rotate = -10, ...rest }) {
    Ocupa las 2 columnas debajo de los 6 tiles. Entra con la
    misma animación de la columna (clase radar-side-row).
    ───────────────────────────────────────────────────────────── */
-export function FairPlayTile() {
-  const { redCards, matches, season } = playerData.fairPlay
+// `data` llega de la API (temporada en curso); sin ella, playerData.fairPlay.
+export function FairPlayTile({ data } = {}) {
+  const { redCards, matches, season } = data || playerData.fairPlay
   return (
     <Box
       className="radar-side-row"
